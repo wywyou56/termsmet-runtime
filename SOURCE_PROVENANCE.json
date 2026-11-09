@@ -1,0 +1,13 @@
+{
+  "source_repository": "https://github.com/wywyou56/termsmet.git",
+  "source_commit": "e797d7cc8f3fdabd6ff3e2ceec90433e4e6b56be",
+  "source_file_sha256": {
+    "server/__init__.py": "96bded5be1c161ea92e31c595212844947a08a292714753b491e4347916ed9ab",
+    "server/mcp_server.py": "97c10a98f27af3d4af97832f3d59cfa885e5842ba2803fb5deb54d2340710bc7",
+    "server/service.py": "4abf2bd5a6e2a0f703faa14cb11aeb0ed60b2c4fce7059c0ec335eba82759878",
+    "server/storage.py": "c12357743f913d2296c21dd2fbf6fd07a2233d8d170a79a9c3e212ec2e2efe57",
+    "server/checker.py": "3e2c7498efc2667e2f8694b7c9666833b3768f68bc8a48b19176284b40f6b53b",
+    "requirements.txt": "60f5ce64a9c068a21e5fc59841ac8ee5b44d5aed3cba57273669468064a421de"
+  },
+  "relationship": "Unmodified source files copied into an independent minimal runtime history."
+}
