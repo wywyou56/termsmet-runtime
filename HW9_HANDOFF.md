@@ -4,10 +4,11 @@
 deterministic checks exercise actual MCP processes and synthetic CLI clients.
 The real restricted Claude preflight passed at clean runtime revision
 `4b91a623c5d6f0443d5df8a302da032aec5595ea` (local `preflight-y2-04`, one matched
-actual `list_templates` call, exit 0). Y3 provides the baseline boundary probe
-and predefined criteria; its formal evidence must be generated from the tagged
-clean revision. Y4 diagnostic improvement and Y5 final reproduction/publication/
-access checks and final tag remain pending.
+actual `list_templates` call, exit 0). Y3 preserved the generic boundary response
+at `hw9-docs-v0`, commit `c1f536295bd0184a7e1a0684fc388d59d9f245b9`.
+Y4 implements the additive missing/received-column diagnostic; its formal rerun
+is recorded separately from the clean Y4 revision. Y5 final reproduction,
+publication, access checks and the final tag remain pending.
 No main cold-start experiment has been run. The final handoff will include the
 full Y1–Y5 results and Sheila's self-contained S1–S5 instructions.
 
@@ -59,13 +60,14 @@ test fixtures, never live Claude or cold-start evidence.
 ## Scripted B1 boundary baseline
 
 Read `coldstart/boundary_criteria.md`, which is separate from Sheila's S1 main
-criteria. The checked-in B1 source has unsupported headers. The fair agent guide
-continues to document the actual accepted source and the current generic error.
-Tests of future structured diagnostic assessment use response fixtures only;
-the server is not temporarily changed to manufacture before/after evidence.
+criteria. The checked-in B1 source has unsupported headers. The tagged v0 guide
+documents its generic error; the current guide documents the additive diagnostic
+and the same accepted source contract. Structured assessment fixtures were tested
+before the freeze without temporarily changing the server.
 
-After committing the probe, criteria, data and guide and creating the local
-`hw9-docs-v0` tag, run once from that exact clean revision:
+The following historical command was run once from the exact clean v0 tag. Its
+input, response, logs and snapshot are preserved. Do not rerun or overwrite that
+attempt. Historical reproduction requires the tag in a separate fresh checkout:
 
 ```sh
 .venv/bin/python -m coldstart.boundary_probe \
@@ -96,12 +98,42 @@ probe hashes, historical provenance, configuration and timestamps are recorded.
 The final consistent `termsmet.sqlite` is inspected read-only to count all seven
 business tables and settlement event types. No observer calls advance the service.
 
-If the baseline already has the planned complete structured missing/received
-column diagnostic, stop and report that fact; never fabricate a generic v0.
-Preserve the formal result and stop before Y4, including on execution failure.
-Never move an existing tag or overwrite a failed attempt. The later Y4 rerun
-uses the same command/input/configuration with `runtime/hw9/b1-v1` and a fresh
-database. Richer boundary diagnostics alone do not establish better agent success.
+The recorded baseline execution completed and correctly rejected the input with
+`INVALID_TERMS`; all seven business tables were empty. Its generic message did
+not identify missing or received columns. Never move the baseline tag or edit
+its evidence.
+
+## Y4 additive diagnostic and comparison
+
+The parser now raises a small `ValueError` subclass only for otherwise valid
+headers missing required column names. Empty, duplicate and blank-header
+validation still precedes that case. The service propagates optional details:
+
+```json
+{"error":{"code":"INVALID_TERMS","message":"Required source columns are missing","details":{"missing_columns":["Order","Units","Price"],"received_columns":["order_no","client","qty","unit_price"]}}}
+```
+
+Other errors without details keep their original shape. The service does not
+parse the source a second time. Headers are not normalized; accepted inputs,
+monetary conversion, delivery checking, tool schemas, checker version, deadlines,
+repair rules and settlement gates remain unchanged. The valid regression
+transaction uses an extra source column, two-second review, bounded real-time
+polling that accepts an already `RELEASED` job, and a hand-computed delivery.
+
+After testing and committing Y4, run the same probe once from that clean revision:
+
+```sh
+.venv/bin/python -m coldstart.boundary_probe \
+  --source-csv coldstart/data/B1.csv --out runtime/hw9/b1-v1
+```
+
+Keep the probe, B1 input and predefined criteria byte-identical to v0. Compare
+the input/request, inventory, SDK/interpreter and client settings; record new
+runtime, guide and provenance hashes. Report execution, rejection, verified
+zero state changes, and diagnostic richness separately. The first three should
+remain successful and richness should become structured. Preserve both attempts
+and the local comparison independently of Git until reviewed Y5 publication.
+Richer boundary diagnostics alone do not establish better agent success.
 
 ## Launcher invocation and task contract
 
@@ -226,8 +258,9 @@ evidence and live state. Preserve the whole failed output directory for diagnosi
 ## Work still required
 
 Y2 passed its actual restricted Claude preflight; that is setup verification,
-not the main cold-start result. Y3 must freeze and observe the original
-unsupported-input diagnostic before Y4 changes it. Y5 must provide the final results/handoff,
+not the main cold-start result. The original Y3 unsupported-input observation
+remains preserved for the Y4 comparison. Y5 must provide the final results/handoff,
 independent-checkout verification, reviewed publication, tags, and confirmed
-Sheila access to this runtime repository. Y3 authorizes the local baseline tag
-only. Publication, the final tag and the main cold-start run remain outside Y3.
+Sheila access to this runtime repository. Y4 authorizes a local commit and one
+fresh improved boundary attempt only. Publication, the final tag and the main
+cold-start run remain outside Y4.

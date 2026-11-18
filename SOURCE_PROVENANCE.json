@@ -13,8 +13,9 @@
   "hw9_derivative": {
     "baseline_runtime_commit": "7ee09295226d2a41555293f391e13a8c46020031",
     "changed_copied_files": {
-      "server/service.py": "Y1: expose the existing current_submission_version database value in get_job; no schema or settlement changes."
+      "server/service.py": "Y1: expose the existing current_submission_version database value in get_job. Y4: propagate optional business-error details for missing source columns; no schema or settlement changes.",
+      "server/checker.py": "Y4: distinguish missing required columns after unchanged unique/nonempty header validation using a ValueError subclass with missing/received-column details. Accepted inputs, monetary conversion and delivery checking are unchanged."
     },
-    "additional_work": "Y1 interface guide, official-SDK connection example, focused baseline tests, ignore rules and README updates. Y2 adds independent coldstart execution/proxy/preflight modules, deterministic tests and an interim evidence-interface handoff; the real restricted-Claude preflight passed at 4b91a623c5d6f0443d5df8a302da032aec5595ea. Y3 adds the scripted boundary probe, B1 input, predefined criteria and response-fixture assessment tests. No further copied server files change; boundary diagnostic improvement and final handoff remain pending."
+    "additional_work": "Y1 interface guide, official-SDK connection example, focused baseline tests, ignore rules and README updates. Y2 adds independent execution/proxy/preflight modules; real restricted-Claude preflight passed at 4b91a623c5d6f0443d5df8a302da032aec5595ea. Y3 froze the scripted boundary probe, B1 and criteria at c1f536295bd0184a7e1a0684fc388d59d9f245b9. Y4 adds missing-column diagnostics and validation/real-MCP transaction regressions while preserving the probe/input/criteria and v0 evidence. Final handoff and publication remain Y5."
   }
 }

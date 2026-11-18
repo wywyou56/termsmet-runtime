@@ -114,7 +114,7 @@ class ActualMCPProbeTests(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self):
         asyncio.get_running_loop().slow_callback_duration = 5
 
-    async def test_actual_generic_rejection_completes_and_preserves_exact_request(self):
+    async def test_actual_missing_header_rejection_completes_and_preserves_exact_request(self):
         out = prepare_output(self.root / "actual")
         args = SimpleNamespace(source_csv=self.source, python=sys.executable, startup_seconds=4)
         self.assertEqual(await probe.run(args, out), 0)
@@ -122,8 +122,12 @@ class ActualMCPProbeTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(report["execution_status"], "completed", report)
         self.assertTrue(report["unsupported_input_correctly_rejected"])
         self.assertTrue(report["zero_state_changes_verified"])
-        self.assertEqual(report["diagnostic_richness_observed"]["classification"], "generic")
-        self.assertEqual(report["business_response"], GENERIC)
+        self.assertEqual(report["diagnostic_richness_observed"]["classification"], "structured")
+        self.assertEqual(report["business_response"], {"error": {
+            "code": "INVALID_TERMS", "message": "Required source columns are missing", "details": {
+                "missing_columns": ["Order", "Units", "Price"], "received_columns": ["sku", "count", "cost"],
+            },
+        }})
         self.assertEqual((out / "source.csv").read_bytes(), self.source.read_bytes())
         self.assertEqual(report["source_sha256"], hashlib.sha256(self.source.read_bytes()).hexdigest())
         self.assertTrue(report["fresh_database_verified"])

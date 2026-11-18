@@ -8,7 +8,7 @@ from datetime import UTC, datetime, timedelta
 from uuid import uuid4
 
 from . import checker
-from .checker import CHECKER_VERSION, TEMPLATE_ID, list_templates, parse_source
+from .checker import CHECKER_VERSION, TEMPLATE_ID, MissingSourceColumnsError, list_templates, parse_source
 from .storage import transaction
 
 
@@ -37,9 +37,10 @@ def timestamp(value: datetime) -> str:
 
 
 class BusinessError(Exception):
-    def __init__(self, code: str, message: str):
+    def __init__(self, code: str, message: str, details: dict[str, object] | None = None):
         super().__init__(message)
         self.code = code
+        self.details = details
 
 
 class TermsMetService:
@@ -89,6 +90,8 @@ class TermsMetService:
             except BusinessError as exc:
                 self.connection.execute("ROLLBACK TO requested_action")
                 result = {"error": {"code": exc.code, "message": str(exc)}}
+                if exc.details is not None:
+                    result["error"]["details"] = exc.details
             self.connection.execute("RELEASE requested_action")
 
         for event_type, job_id in events:
@@ -292,6 +295,8 @@ class TermsMetService:
         try:
             parse_source(source_csv)
             source_hash = hashlib.sha256(source_csv.encode("utf-8")).hexdigest()
+        except MissingSourceColumnsError as exc:
+            raise BusinessError("INVALID_TERMS", str(exc), details=exc.details) from exc
         except ValueError as exc:
             raise BusinessError("INVALID_TERMS", "source_csv must contain valid, unambiguous order data") from exc
         job_id = f"job-{uuid4().hex}"

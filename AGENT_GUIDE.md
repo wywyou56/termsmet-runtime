@@ -1,4 +1,4 @@
-# TermsMet agent guide — HW9 baseline v0
+# TermsMet agent guide — HW9 current interface
 
 TermsMet is an MCP stdio service for two agents agreeing on a structured-data
 extraction task. It records versioned acceptance, simulated funding, private
@@ -241,17 +241,35 @@ mismatch; otherwise `REJECTED`. Invalid evidence enters `CHECK_ERROR`, blocking
 release. `DISPUTE_FAIL` returns `RECORDED`. A buyer cannot veto a correct PASS
 by disagreeing. Subjective arbitration is not implemented.
 
-Business errors return an ordinary tool result containing:
+Business errors return an ordinary tool result with `code`, `message`, and
+optional `details`. When otherwise unique, nonempty headers omit required
+columns, the response identifies the missing names in contract order and the
+original received headers in their original order. For example:
+
+```json
+{
+  "error": {
+    "code": "INVALID_TERMS",
+    "message": "Required source columns are missing",
+    "details": {
+      "missing_columns": ["Order", "Units", "Price"],
+      "received_columns": ["order_no", "client", "qty", "unit_price"]
+    }
+  }
+}
+```
+
+Empty, duplicate, blank or whitespace-only headers are checked first and retain
+the generic error. Other malformed source data also retains this response:
 
 ```json
 {"error":{"code":"INVALID_TERMS","message":"source_csv must contain valid, unambiguous order data"}}
 ```
 
-That is the baseline source-parse error, including unsupported required headers.
-It does not identify missing or received columns. Unsupported headers remain
-unsupported: use the source contract rather than assuming automatic renaming.
-An invalid proposal does not create a job. This guide states the actual baseline
-behavior; the diagnostic improvement and boundary evidence are later checkpoints.
+The generic missing-header response is preserved historically at `hw9-docs-v0`.
+Current details are diagnostic feedback: source names are not trimmed, renamed,
+or accepted automatically. The accepted source contract is unchanged. Invalid
+proposals create no job. Existing errors without details retain their prior shape.
 
 | Business code | Meaning |
 | --- | --- |
@@ -326,6 +344,7 @@ settlement rules, server defaults, or historical HW7/HW8 revisions. It does not
 provide a hosted endpoint, real payments, production authentication, background
 settlement, extra templates, or agent reasoning. Y2 adds execution tools and
 preflight separately from the service interface. Y3 supplies a scripted
-unsupported-input probe and predefined boundary criteria. The diagnostic
-improvement/comparison, final technical handoff and main cold-start evidence
-remain later work.
+unsupported-input probe and predefined boundary criteria. Y4 adds structured
+missing/received-column diagnostics without changing acceptance or settlement.
+The formal B1 comparison is recorded separately; final technical handoff and
+main cold-start evidence remain later work.

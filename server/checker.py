@@ -12,6 +12,12 @@ CHECKER_VERSION = "order_extraction_v1.0"
 DELIVERY_FIELDS = ("order_id", "quantity", "unit_price_cents", "total_cents")
 
 
+class MissingSourceColumnsError(ValueError):
+    def __init__(self, missing_columns: list[str], received_columns: list[str]):
+        super().__init__("Required source columns are missing")
+        self.details = {"missing_columns": missing_columns, "received_columns": received_columns}
+
+
 def parse_source(source_csv: str) -> dict[str, dict[str, object]]:
     """Derive order records from source text, without changing the agreed text."""
     if not isinstance(source_csv, str):
@@ -20,10 +26,13 @@ def parse_source(source_csv: str) -> dict[str, dict[str, object]]:
         rows = (row for row in csv.reader(io.StringIO(source_csv, newline=""), strict=True) if row)
         headers = next(rows, None)
         if (not headers or len(set(headers)) != len(headers)
-                or any(not header.strip() for header in headers)
-                or not {"Order", "Units", "Price"}.issubset(headers)):
+                or any(not header.strip() for header in headers)):
             raise ValueError("source CSV requires unique, nonempty headers including Order, Units and Price")
-        order_column, units_column, price_column = (headers.index(name) for name in ("Order", "Units", "Price"))
+        required = ("Order", "Units", "Price")
+        missing = [name for name in required if name not in headers]
+        if missing:
+            raise MissingSourceColumnsError(missing, headers)
+        order_column, units_column, price_column = (headers.index(name) for name in required)
         orders = {}
         for row in rows:
             if len(row) != len(headers):

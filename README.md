@@ -56,23 +56,33 @@ Y2 is complete: local `preflight-y2-04` passed at clean runtime commit
 request/response. Raw evidence is preserved locally under `runtime/hw9/`;
 reviewed publication is reserved for Y5. Fake CLI tests do not satisfy this gate.
 
-Y3 adds the [scripted boundary criteria](coldstart/boundary_criteria.md), B1 input,
-and an official-SDK probe. Commit/tag the clean baseline as `hw9-docs-v0` before
-the single formal baseline run:
+Y3 froze the [scripted boundary criteria](coldstart/boundary_criteria.md), B1 input,
+and official-SDK probe at local `hw9-docs-v0`, commit
+`c1f536295bd0184a7e1a0684fc388d59d9f245b9`. The single formal baseline run is
+preserved in `runtime/hw9/b1-v0`: execution completed, `INVALID_TERMS` rejected the
+input, all seven business tables were empty, and the response was generic.
+Do not rerun or overwrite that attempt or move the baseline tag.
+
+Y4 adds optional `error.details.missing_columns` and `received_columns` for valid
+headers that omit required names. Accepted inputs, other validation errors,
+checker version, and settlement behavior are unchanged. The unchanged probe is
+run from the tested clean Y4 commit into a fresh directory:
 
 ```sh
 .venv/bin/python -m coldstart.boundary_probe \
-  --source-csv coldstart/data/B1.csv --out runtime/hw9/b1-v0
+  --source-csv coldstart/data/B1.csv --out runtime/hw9/b1-v1
 ```
 
 The probe records **execution**, **correct rejection**, **verified zero business
-state changes**, and **diagnostic richness** separately. A generic `INVALID_TERMS`
-message is the expected baseline observation, not an execution failure. It makes
+state changes**, and **diagnostic richness** separately. The preserved generic
+`INVALID_TERMS` is a baseline observation, not an execution failure. The probe makes
 one actual buyer proposal, then checks a read-only snapshot; no Claude session
-or credentials are used. Do not change the diagnostic until the actual baseline
-evidence has been preserved. The same command with `b1-v1` is reserved for Y4.
+or credentials are used. Compare v0/v1 source, client settings, rejection and
+state checks independently from diagnostic richness. Richer feedback alone does
+not establish improved agent success.
 
-The diagnostic improvement and final versioned handoff remain pending Y4–Y5.
+The formal comparison is retained with local raw evidence. The final versioned
+handoff, independent-checkout verification and reviewed publication remain Y5.
 Main task files/data belong to Sheila's S1 and are intentionally absent. No HW9
 main cold-start result is claimed. No historical benchmark behavior has changed.
 
