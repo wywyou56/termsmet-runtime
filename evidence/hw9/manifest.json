@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "scope": "scripted boundary and setup evidence; no main-task scoring",
+  "preflights": [
+    "preflight-y2-04"
+  ],
+  "state_evidence": "Recorded exports plus snapshot hashes, not independent inspection of an unpublished database.",
+  "files": {
+    "b1-v0/probe.json": "85aa3a3dcc6a3f2dbad281b0469fffb0d44b608265d3a0fdb90dfedb1d465b1a",
+    "b1-v0/source.csv": "f26d4f490e74852bd8e4e603204f0f5a99230746f6f4aae80eb14143a48b123f",
+    "b1-v0/mcp-buyer.jsonl": "ea8d1622ec08b7d78fe99df5a4ce8164ffa91ef04261ace154226193fe37e0c4",
+    "b1-v0/buyer-control.jsonl": "74bf4a3815b11bf2444f651ae0bf3656d7e26aee9c913bb929f815a5b782323e",
+    "b1-v0/state.json": "d0730aa72bbbdc74f2c2f020e3e6375981c1f9e2718638b580c8a3ac18a42d71",
+    "b1-v1/probe.json": "c31f65b1b6ef12f2a4db92b39c0afbb9a46d67345fb98c1696c762317e7dfca0",
+    "b1-v1/source.csv": "f26d4f490e74852bd8e4e603204f0f5a99230746f6f4aae80eb14143a48b123f",
+    "b1-v1/mcp-buyer.jsonl": "4b97acb66efb1d7cacb4818bb267578fe7acae1228a833113a8f85dd5e478313",
+    "b1-v1/buyer-control.jsonl": "768ae20f18d41eb288d34dfc7c5f1f5a581d2f07eb2ef2c6a4ed601c55832337",
+    "b1-v1/state.json": "2015c849a088087521a44a92a53a238f007d99a201bcfcabe7aac2f1c91ada84",
+    "comparison.json": "3190a5341f171d335d42e398c92884dc69701625c523ea7f83aa7f2454cd1560",
+    "attempts.json": "2e8571cc55f26926a15a59aa02454d32d3368ee9986f46174d6c9a77abaa1ef7",
+    "preflight-y2-04/preflight.json": "5a70f3f1db03f16f5b15c688b0c1bc7d215c04020ffdea5560a3ce72aa64ba48",
+    "preflight-y2-04/claude/manifest.json": "2c8e842a55d00442a04e5f9a04fe1f891bfb47865f1776e765e56ec068231da4",
+    "preflight-y2-04/claude/buyer.jsonl": "5f23f1862ab2a397c3edab87bd224fd513d35f764bc44ebf8163a6fc9769f86e",
+    "preflight-y2-04/claude/mcp-buyer.jsonl": "fd72d6d478096752117fd65af4b0bb57296529a4bc33ed8aec1fde41d71402c7",
+    "preflight-y2-04/claude/buyer-control.jsonl": "ba1f61cb6fbe30e0d25a20e0823cb0c964c8e61835cb64b6d240aba1d7455bd5",
+    "preflight-y2-04/sdk/sdk.json": "86e7e9166a2a573f486a714b1469bcd92dd730485c096a7818d15237d43774e8",
+    "preflight-y2-04/sdk/mcp-buyer.jsonl": "1c087ce67e2c2d74a044850257eeed12a1254c563a7e0f0b77c7c88738833e71",
+    "preflight-y2-04/sdk/mcp-provider.jsonl": "8bcac01be42c9f2ccb3cd8849df38f00c0eb68810e118f1f0dca1e7ea1c1e55d",
+    "README.md": "25efd71baf288c1b8272a290dcb17d1ba3fac0797f74ccf7a65e4581863f692f",
+    "verify.py": "bc13834a818b870b81363224e9f8bf4735bd1d12b9087efed8d6f2c4a6190d1a"
+  },
+  "origins": {
+    "b1-v0/probe.json": {
+      "source": "runtime/hw9/b1-v0/probe.json",
+      "source_sha256": "c790c6f9c0bd86072d5089dd37860cdd5b3b01604e493b0c7d499fa161004882",
+      "published_sha256": "85aa3a3dcc6a3f2dbad281b0469fffb0d44b608265d3a0fdb90dfedb1d465b1a",
+      "transformations": [
+        "machine paths and session/account metadata sanitized; affected JSON containers reserialized; business payloads and protocol IDs unchanged"
+      ]
+    },
+    "b1-v0/source.csv": {
+      "source": "runtime/hw9/b1-v0/source.csv",
+      "source_sha256": "f26d4f490e74852bd8e4e603204f0f5a99230746f6f4aae80eb14143a48b123f",
+      "published_sha256": "f26d4f490e74852bd8e4e603204f0f5a99230746f6f4aae80eb14143a48b123f",
+      "transformations": []
+    },
+    "b1-v0/mcp-buyer.jsonl": {
+      "source": "runtime/hw9/b1-v0/mcp-buyer.jsonl",
+      "source_sha256": "ea8d1622ec08b7d78fe99df5a4ce8164ffa91ef04261ace154226193fe37e0c4",
+      "published_sha256": "ea8d1622ec08b7d78fe99df5a4ce8164ffa91ef04261ace154226193fe37e0c4",
+      "transformations": []
+    },
+    "b1-v0/buyer-control.jsonl": {
+      "source": "runtime/hw9/b1-v0/buyer-control.jsonl",
+      "source_sha256": "74bf4a3815b11bf2444f651ae0bf3656d7e26aee9c913bb929f815a5b782323e",
+      "published_sha256": "74bf4a3815b11bf2444f651ae0bf3656d7e26aee9c913bb929f815a5b782323e",
+      "transformations": []
+    },
+    "b1-v0/state.json": {
+      "source": "runtime/hw9/b1-v0/termsmet.sqlite",
+      "source_sha256": "527b1c60bd47a59801f7d997ccfd83be02ed34218e5dd74899015ec4e6e6c65b",
+      "published_sha256": "d0730aa72bbbdc74f2c2f020e3e6375981c1f9e2718638b580c8a3ac18a42d71",
+      "transformations": [
+        "read-only counts exported from reviewed copy; database binary omitted"
+      ]
+    },
+    "b1-v1/probe.json": {
+      "source": "runtime/hw9/b1-v1/probe.json",
+      "source_sha256": "1d32af108b7774b72c65034ed92e03590ccbf8e1720d6748881fc0c792a48bdf",
+      "published_sha256": "c31f65b1b6ef12f2a4db92b39c0afbb9a46d67345fb98c1696c762317e7dfca0",
+      "transformations": [
+        "machine paths and session/account metadata sanitized; affected JSON containers reserialized; business payloads and protocol IDs unchanged"
+      ]
+    },
+    "b1-v1/source.csv": {
+      "source": "runtime/hw9/b1-v1/source.csv",
+      "source_sha256": "f26d4f490e74852bd8e4e603204f0f5a99230746f6f4aae80eb14143a48b123f",
+      "published_sha256": "f26d4f490e74852bd8e4e603204f0f5a99230746f6f4aae80eb14143a48b123f",
+      "transformations": []
+    },
+    "b1-v1/mcp-buyer.jsonl": {
+      "source": "runtime/hw9/b1-v1/mcp-buyer.jsonl",
+      "source_sha256": "4b97acb66efb1d7cacb4818bb267578fe7acae1228a833113a8f85dd5e478313",
+      "published_sha256": "4b97acb66efb1d7cacb4818bb267578fe7acae1228a833113a8f85dd5e478313",
+      "transformations": []
+    },
+    "b1-v1/buyer-control.jsonl": {
+      "source": "runtime/hw9/b1-v1/buyer-control.jsonl",
+      "source_sha256": "768ae20f18d41eb288d34dfc7c5f1f5a581d2f07eb2ef2c6a4ed601c55832337",
+      "published_sha256": "768ae20f18d41eb288d34dfc7c5f1f5a581d2f07eb2ef2c6a4ed601c55832337",
+      "transformations": []
+    },
+    "b1-v1/state.json": {
+      "source": "runtime/hw9/b1-v1/termsmet.sqlite",
+      "source_sha256": "527b1c60bd47a59801f7d997ccfd83be02ed34218e5dd74899015ec4e6e6c65b",
+      "published_sha256": "2015c849a088087521a44a92a53a238f007d99a201bcfcabe7aac2f1c91ada84",
+      "transformations": [
+        "read-only counts exported from reviewed copy; database binary omitted"
+      ]
+    },
+    "comparison.json": {
+      "source": "runtime/hw9/b1-comparison.json",
+      "source_sha256": "3190a5341f171d335d42e398c92884dc69701625c523ea7f83aa7f2454cd1560",
+      "published_sha256": "3190a5341f171d335d42e398c92884dc69701625c523ea7f83aa7f2454cd1560",
+      "transformations": []
+    },
+    "attempts.json": {
+      "source": "derived:listed-preflight-summaries",
+      "source_sha256": "5cdbd66e2d3f4febfe0dac54fdffe300830b9ab516208780224f5de155171a5a",
+      "published_sha256": "2e8571cc55f26926a15a59aa02454d32d3368ee9986f46174d6c9a77abaa1ef7",
+      "transformations": [
+        "allowlisted summary; individual input report hashes included"
+      ]
+    },
+    "preflight-y2-04/preflight.json": {
+      "source": "runtime/hw9/preflight-y2-04/preflight.json",
+      "source_sha256": "5a70f3f1db03f16f5b15c688b0c1bc7d215c04020ffdea5560a3ce72aa64ba48",
+      "published_sha256": "5a70f3f1db03f16f5b15c688b0c1bc7d215c04020ffdea5560a3ce72aa64ba48",
+      "transformations": []
+    },
+    "preflight-y2-04/claude/manifest.json": {
+      "source": "runtime/hw9/preflight-y2-04/claude/manifest.json",
+      "source_sha256": "6a3bc836e257f5037214c6e8297c917092e9acc8da0a173e96be05d711c11ff7",
+      "published_sha256": "2c8e842a55d00442a04e5f9a04fe1f891bfb47865f1776e765e56ec068231da4",
+      "transformations": [
+        "machine paths and session/account metadata sanitized; affected JSON containers reserialized; business payloads and protocol IDs unchanged"
+      ]
+    },
+    "preflight-y2-04/claude/buyer.jsonl": {
+      "source": "runtime/hw9/preflight-y2-04/claude/buyer.jsonl",
+      "source_sha256": "e22e3e9c3e31b421b67b52b8ebb940d2443616387ea88876dd3bd652ac08431d",
+      "published_sha256": "5f23f1862ab2a397c3edab87bd224fd513d35f764bc44ebf8163a6fc9769f86e",
+      "transformations": [
+        "machine paths and session/account metadata sanitized; affected JSON containers reserialized; business payloads and protocol IDs unchanged"
+      ]
+    },
+    "preflight-y2-04/claude/mcp-buyer.jsonl": {
+      "source": "runtime/hw9/preflight-y2-04/claude/mcp-buyer.jsonl",
+      "source_sha256": "fd72d6d478096752117fd65af4b0bb57296529a4bc33ed8aec1fde41d71402c7",
+      "published_sha256": "fd72d6d478096752117fd65af4b0bb57296529a4bc33ed8aec1fde41d71402c7",
+      "transformations": []
+    },
+    "preflight-y2-04/claude/buyer-control.jsonl": {
+      "source": "runtime/hw9/preflight-y2-04/claude/buyer-control.jsonl",
+      "source_sha256": "ba1f61cb6fbe30e0d25a20e0823cb0c964c8e61835cb64b6d240aba1d7455bd5",
+      "published_sha256": "ba1f61cb6fbe30e0d25a20e0823cb0c964c8e61835cb64b6d240aba1d7455bd5",
+      "transformations": []
+    },
+    "preflight-y2-04/sdk/sdk.json": {
+      "source": "runtime/hw9/preflight-y2-04/sdk/sdk.json",
+      "source_sha256": "86e7e9166a2a573f486a714b1469bcd92dd730485c096a7818d15237d43774e8",
+      "published_sha256": "86e7e9166a2a573f486a714b1469bcd92dd730485c096a7818d15237d43774e8",
+      "transformations": []
+    },
+    "preflight-y2-04/sdk/mcp-buyer.jsonl": {
+      "source": "runtime/hw9/preflight-y2-04/sdk/mcp-buyer.jsonl",
+      "source_sha256": "1c087ce67e2c2d74a044850257eeed12a1254c563a7e0f0b77c7c88738833e71",
+      "published_sha256": "1c087ce67e2c2d74a044850257eeed12a1254c563a7e0f0b77c7c88738833e71",
+      "transformations": []
+    },
+    "preflight-y2-04/sdk/mcp-provider.jsonl": {
+      "source": "runtime/hw9/preflight-y2-04/sdk/mcp-provider.jsonl",
+      "source_sha256": "8bcac01be42c9f2ccb3cd8849df38f00c0eb68810e118f1f0dca1e7ea1c1e55d",
+      "published_sha256": "8bcac01be42c9f2ccb3cd8849df38f00c0eb68810e118f1f0dca1e7ea1c1e55d",
+      "transformations": []
+    },
+    "README.md": {
+      "source": "repository:evidence/hw9/README.md",
+      "source_sha256": "25efd71baf288c1b8272a290dcb17d1ba3fac0797f74ccf7a65e4581863f692f",
+      "published_sha256": "25efd71baf288c1b8272a290dcb17d1ba3fac0797f74ccf7a65e4581863f692f",
+      "transformations": []
+    },
+    "verify.py": {
+      "source": "repository:evidence/hw9/verify.py",
+      "source_sha256": "bc13834a818b870b81363224e9f8bf4735bd1d12b9087efed8d6f2c4a6190d1a",
+      "published_sha256": "bc13834a818b870b81363224e9f8bf4735bd1d12b9087efed8d6f2c4a6190d1a",
+      "transformations": []
+    }
+  }
+}

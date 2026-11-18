@@ -1,0 +1,151 @@
+{
+  "kind": "scripted_mcp_boundary_comparison_not_cold_start",
+  "baseline_tag": {
+    "name": "hw9-docs-v0",
+    "commit": "c1f536295bd0184a7e1a0684fc388d59d9f245b9",
+    "object": "9fe1452001a9290e7a177a1f8077f5f8d93e96a3"
+  },
+  "invariants": {
+    "source_sha256_equal": true,
+    "source_bytes_equal": true,
+    "request_arguments_equal": true,
+    "settings_equal": true,
+    "python_equal": true,
+    "mcp_version_equal": true,
+    "full_tool_inventory_equal": true,
+    "probe_sha256_equal": true,
+    "criteria_sha256_equal": true,
+    "baseline_tag_unchanged": true,
+    "all_v0_evidence_files_unchanged": true,
+    "protected_source_files_unchanged": true
+  },
+  "runs": {
+    "v0": {
+      "runtime_commit": "c1f536295bd0184a7e1a0684fc388d59d9f245b9",
+      "report": "runtime/hw9/b1-v0/probe.json",
+      "report_sha256": "c790c6f9c0bd86072d5089dd37860cdd5b3b01604e493b0c7d499fa161004882",
+      "source_sha256": "f26d4f490e74852bd8e4e603204f0f5a99230746f6f4aae80eb14143a48b123f",
+      "request_id": 3,
+      "outcomes": {
+        "execution_status": "completed",
+        "unsupported_input_correctly_rejected": true,
+        "zero_state_changes_verified": true,
+        "diagnostic_richness_observed": {
+          "classification": "generic",
+          "expected": {
+            "required_columns": [
+              "Order",
+              "Units",
+              "Price"
+            ],
+            "missing_columns": [
+              "Order",
+              "Units",
+              "Price"
+            ],
+            "received_columns": [
+              "order_no",
+              "client",
+              "qty",
+              "unit_price"
+            ]
+          },
+          "observed_details": null,
+          "missing_columns_identified": false,
+          "received_columns_identified": false
+        }
+      },
+      "business_response": {
+        "error": {
+          "code": "INVALID_TERMS",
+          "message": "source_csv must contain valid, unambiguous order data"
+        }
+      },
+      "state_counts": {
+        "jobs": 0,
+        "agreement_versions": 0,
+        "acceptances": 0,
+        "submissions": 0,
+        "check_results": 0,
+        "challenges": 0,
+        "settlement_events": 0
+      }
+    },
+    "v1": {
+      "runtime_commit": "7d70e99801c512d5d7e4653f0cf451ed33eb4b45",
+      "report": "runtime/hw9/b1-v1/probe.json",
+      "report_sha256": "1d32af108b7774b72c65034ed92e03590ccbf8e1720d6748881fc0c792a48bdf",
+      "source_sha256": "f26d4f490e74852bd8e4e603204f0f5a99230746f6f4aae80eb14143a48b123f",
+      "request_id": 3,
+      "outcomes": {
+        "execution_status": "completed",
+        "unsupported_input_correctly_rejected": true,
+        "zero_state_changes_verified": true,
+        "diagnostic_richness_observed": {
+          "classification": "structured",
+          "expected": {
+            "required_columns": [
+              "Order",
+              "Units",
+              "Price"
+            ],
+            "missing_columns": [
+              "Order",
+              "Units",
+              "Price"
+            ],
+            "received_columns": [
+              "order_no",
+              "client",
+              "qty",
+              "unit_price"
+            ]
+          },
+          "observed_details": {
+            "missing_columns": [
+              "Order",
+              "Units",
+              "Price"
+            ],
+            "received_columns": [
+              "order_no",
+              "client",
+              "qty",
+              "unit_price"
+            ]
+          },
+          "missing_columns_identified": true,
+          "received_columns_identified": true
+        }
+      },
+      "business_response": {
+        "error": {
+          "code": "INVALID_TERMS",
+          "message": "Required source columns are missing",
+          "details": {
+            "missing_columns": [
+              "Order",
+              "Units",
+              "Price"
+            ],
+            "received_columns": [
+              "order_no",
+              "client",
+              "qty",
+              "unit_price"
+            ]
+          }
+        }
+      },
+      "state_counts": {
+        "jobs": 0,
+        "agreement_versions": 0,
+        "acceptances": 0,
+        "submissions": 0,
+        "check_results": 0,
+        "challenges": 0,
+        "settlement_events": 0
+      }
+    }
+  }
+}

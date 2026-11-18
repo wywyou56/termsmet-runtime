@@ -1,0 +1,50 @@
+{
+  "kind": "setup_attempt_index",
+  "attempts": [
+    {
+      "label": "preflight-y2-01",
+      "kind": "setup_not_main_cold_start",
+      "status": "blocked_missing_credential",
+      "passed": false,
+      "sdk_passed": true,
+      "runtime_commit": "853acf6bfe734fdcff16bf2ee3c9172254393f75",
+      "working_tree_dirty": true,
+      "tool_attempts": 0,
+      "original_preflight_sha256": "7fb4e0233a51879786868e752eccbc97491c71f7b2fb254a93d0482fef593a26"
+    },
+    {
+      "label": "preflight-y2-02",
+      "kind": "setup_not_main_cold_start",
+      "status": "blocked_missing_credential",
+      "passed": false,
+      "sdk_passed": true,
+      "runtime_commit": "853acf6bfe734fdcff16bf2ee3c9172254393f75",
+      "working_tree_dirty": true,
+      "tool_attempts": 0,
+      "original_preflight_sha256": "3ea5f4f3c2d9f38a0c8dfdd718887dc72b5a2ca7b6be46729fa28089eb2591cc"
+    },
+    {
+      "label": "preflight-y2-03",
+      "kind": "setup_not_main_cold_start",
+      "status": "blocked_missing_credential",
+      "passed": false,
+      "sdk_passed": true,
+      "runtime_commit": "4b91a623c5d6f0443d5df8a302da032aec5595ea",
+      "working_tree_dirty": false,
+      "tool_attempts": 0,
+      "original_preflight_sha256": "63d8f5c855aba800f0fbb2da2250e14beb8deb450e0aa0a78f1ca1e4c930d09a"
+    },
+    {
+      "label": "preflight-y2-04",
+      "kind": "setup_not_main_cold_start",
+      "status": "passed",
+      "passed": true,
+      "sdk_passed": true,
+      "runtime_commit": "4b91a623c5d6f0443d5df8a302da032aec5595ea",
+      "working_tree_dirty": false,
+      "tool_attempts": 1,
+      "original_preflight_sha256": "5a70f3f1db03f16f5b15c688b0c1bc7d215c04020ffdea5560a3ce72aa64ba48"
+    }
+  ],
+  "disclosure": "Attempts 01-03 were blocked before a model call by missing credentials. The operator supplied authorized access for 04; no mid-run coaching is reported. These are setup checks, not adoption or main-task experiments."
+}

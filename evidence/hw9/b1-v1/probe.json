@@ -1,0 +1,491 @@
+{
+  "kind": "scripted_mcp_boundary_not_cold_start",
+  "schema_version": 1,
+  "started_at": 1794976516.8666828,
+  "execution_status": "completed",
+  "unsupported_input_correctly_rejected": true,
+  "zero_state_changes_verified": true,
+  "diagnostic_richness_observed": {
+    "classification": "structured",
+    "expected": {
+      "required_columns": [
+        "Order",
+        "Units",
+        "Price"
+      ],
+      "missing_columns": [
+        "Order",
+        "Units",
+        "Price"
+      ],
+      "received_columns": [
+        "order_no",
+        "client",
+        "qty",
+        "unit_price"
+      ]
+    },
+    "observed_details": {
+      "missing_columns": [
+        "Order",
+        "Units",
+        "Price"
+      ],
+      "received_columns": [
+        "order_no",
+        "client",
+        "qty",
+        "unit_price"
+      ]
+    },
+    "missing_columns_identified": true,
+    "received_columns_identified": true
+  },
+  "snapshot": {
+    "status": "available",
+    "path": "termsmet.sqlite",
+    "sha256": "527b1c60bd47a59801f7d997ccfd83be02ed34218e5dd74899015ec4e6e6c65b"
+  },
+  "cleanup": {
+    "status": "completed",
+    "process_groups": [
+      69916,
+      69922
+    ],
+    "errors": []
+  },
+  "source_sha256": "f26d4f490e74852bd8e4e603204f0f5a99230746f6f4aae80eb14143a48b123f",
+  "source_path": "<REPOSITORY>/coldstart/data/B1.csv",
+  "runtime_commit": "7d70e99801c512d5d7e4653f0cf451ed33eb4b45",
+  "working_tree_dirty": false,
+  "baseline_tag": {
+    "name": "hw9-docs-v0",
+    "commit": "c1f536295bd0184a7e1a0684fc388d59d9f245b9",
+    "matches_runtime": false
+  },
+  "python": "3.11.5 (v3.11.5:cce6ba91b3, Aug 24 2023, 10:50:31) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "mcp_version": "2.3.0",
+  "file_sha256": {
+    "coldstart/boundary_probe.py": "f89291090a058aa3d0bf636549a6cf58ee53a7f4666b999d19c8fd361ebf5666",
+    "coldstart/boundary_criteria.md": "2e7e092546e79dd667f451c9f4665a0761741de4996e0718535fc693cc5df15a",
+    "AGENT_GUIDE.md": "50ffab2e5d6c589de72a6a0a208a155eba1871bca4afafcd4305a93ebece1876",
+    "SOURCE_PROVENANCE.json": "26837f551a356600049d87096de015047e33223a9e3710b115816f533ed3e345"
+  },
+  "source_provenance": {
+    "source_repository": "https://github.com/wywyou56/termsmet.git",
+    "source_commit": "e797d7cc8f3fdabd6ff3e2ceec90433e4e6b56be",
+    "source_file_sha256": {
+      "server/__init__.py": "96bded5be1c161ea92e31c595212844947a08a292714753b491e4347916ed9ab",
+      "server/mcp_server.py": "97c10a98f27af3d4af97832f3d59cfa885e5842ba2803fb5deb54d2340710bc7",
+      "server/service.py": "4abf2bd5a6e2a0f703faa14cb11aeb0ed60b2c4fce7059c0ec335eba82759878",
+      "server/storage.py": "c12357743f913d2296c21dd2fbf6fd07a2233d8d170a79a9c3e212ec2e2efe57",
+      "server/checker.py": "3e2c7498efc2667e2f8694b7c9666833b3768f68bc8a48b19176284b40f6b53b",
+      "requirements.txt": "60f5ce64a9c068a21e5fc59841ac8ee5b44d5aed3cba57273669468064a421de"
+    },
+    "relationship": "Historical baseline: unmodified source files copied into an independent minimal runtime history at runtime commit 7ee09295226d2a41555293f391e13a8c46020031. The current HW9 tree is a derivative; source_file_sha256 retains the original copied-file hashes, not current-tree hashes.",
+    "hw9_derivative": {
+      "baseline_runtime_commit": "7ee09295226d2a41555293f391e13a8c46020031",
+      "changed_copied_files": {
+        "server/service.py": "Y1: expose the existing current_submission_version database value in get_job. Y4: propagate optional business-error details for missing source columns; no schema or settlement changes.",
+        "server/checker.py": "Y4: distinguish missing required columns after unchanged unique/nonempty header validation using a ValueError subclass with missing/received-column details. Accepted inputs, monetary conversion and delivery checking are unchanged."
+      },
+      "additional_work": "Y1 interface guide, official-SDK connection example, focused baseline tests, ignore rules and README updates. Y2 adds independent execution/proxy/preflight modules; real restricted-Claude preflight passed at 4b91a623c5d6f0443d5df8a302da032aec5595ea. Y3 froze the scripted boundary probe, B1 and criteria at c1f536295bd0184a7e1a0684fc388d59d9f245b9. Y4 adds missing-column diagnostics and validation/real-MCP transaction regressions while preserving the probe/input/criteria and v0 evidence. Final handoff and publication remain Y5."
+    }
+  },
+  "settings": {
+    "identity": "buyer",
+    "review_seconds": 2,
+    "first_submit_minutes": 5,
+    "tool_limit": 1,
+    "startup_seconds": 15,
+    "worker_wall_seconds": 45
+  },
+  "request": {
+    "name": "propose_agreement",
+    "arguments": {
+      "template_id": "order_extraction_v1",
+      "source_csv": "order_no,client,qty,unit_price\nB901,Synthetic-A,2,$3.125\nB902,Synthetic-B,1,$120.00\n"
+    }
+  },
+  "fresh_database_verified": true,
+  "worker": {
+    "completed": true,
+    "started_at": 1794976517.493632,
+    "request": {
+      "name": "propose_agreement",
+      "arguments": {
+        "template_id": "order_extraction_v1",
+        "source_csv": "order_no,client,qty,unit_price\nB901,Synthetic-A,2,$3.125\nB902,Synthetic-B,1,$120.00\n"
+      }
+    },
+    "inventory": [
+      {
+        "name": "list_templates",
+        "description": "List supported acceptance templates and their negotiable terms.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object",
+          "additionalProperties": false,
+          "title": "list_templatesArguments"
+        },
+        "outputSchema": {
+          "type": "object",
+          "additionalProperties": true,
+          "title": "list_templatesDictOutput"
+        }
+      },
+      {
+        "name": "propose_agreement",
+        "description": "Buyer: propose an order extraction agreement from the original CSV text.",
+        "inputSchema": {
+          "properties": {
+            "template_id": {
+              "title": "Template Id",
+              "type": "string"
+            },
+            "source_csv": {
+              "title": "Source Csv",
+              "type": "string"
+            }
+          },
+          "required": [
+            "template_id",
+            "source_csv"
+          ],
+          "type": "object",
+          "additionalProperties": false,
+          "title": "propose_agreementArguments"
+        },
+        "outputSchema": {
+          "type": "object",
+          "additionalProperties": true,
+          "title": "propose_agreementDictOutput"
+        }
+      },
+      {
+        "name": "list_jobs",
+        "description": "List the caller's jobs and current-version acceptance status.",
+        "inputSchema": {
+          "properties": {},
+          "type": "object",
+          "additionalProperties": false,
+          "title": "list_jobsArguments"
+        },
+        "outputSchema": {
+          "type": "object",
+          "additionalProperties": true,
+          "title": "list_jobsDictOutput"
+        }
+      },
+      {
+        "name": "get_job",
+        "description": "Read current agreement terms, original source, status and started deadlines.",
+        "inputSchema": {
+          "properties": {
+            "job_id": {
+              "title": "Job Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "job_id"
+          ],
+          "type": "object",
+          "additionalProperties": false,
+          "title": "get_jobArguments"
+        },
+        "outputSchema": {
+          "type": "object",
+          "additionalProperties": true,
+          "title": "get_jobDictOutput"
+        }
+      },
+      {
+        "name": "counter_agreement",
+        "description": "Provider: counter an unlocked agreement's repair window to 5 or 10 minutes.",
+        "inputSchema": {
+          "properties": {
+            "job_id": {
+              "title": "Job Id",
+              "type": "string"
+            },
+            "repair_window_minutes": {
+              "title": "Repair Window Minutes",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "job_id",
+            "repair_window_minutes"
+          ],
+          "type": "object",
+          "additionalProperties": false,
+          "title": "counter_agreementArguments"
+        },
+        "outputSchema": {
+          "type": "object",
+          "additionalProperties": true,
+          "title": "counter_agreementDictOutput"
+        }
+      },
+      {
+        "name": "accept_agreement",
+        "description": "Accept the current agreement version for this process's identity only.",
+        "inputSchema": {
+          "properties": {
+            "job_id": {
+              "title": "Job Id",
+              "type": "string"
+            },
+            "version": {
+              "title": "Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "job_id",
+            "version"
+          ],
+          "type": "object",
+          "additionalProperties": false,
+          "title": "accept_agreementArguments"
+        },
+        "outputSchema": {
+          "type": "object",
+          "additionalProperties": true,
+          "title": "accept_agreementDictOutput"
+        }
+      },
+      {
+        "name": "fund_job",
+        "description": "Buyer: confirm simulated funding and start the first-submission deadline.",
+        "inputSchema": {
+          "properties": {
+            "job_id": {
+              "title": "Job Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "job_id"
+          ],
+          "type": "object",
+          "additionalProperties": false,
+          "title": "fund_jobArguments"
+        },
+        "outputSchema": {
+          "type": "object",
+          "additionalProperties": true,
+          "title": "fund_jobDictOutput"
+        }
+      },
+      {
+        "name": "submit_delivery",
+        "description": "Provider: submit delivery records for deterministic checking and private storage.",
+        "inputSchema": {
+          "properties": {
+            "job_id": {
+              "title": "Job Id",
+              "type": "string"
+            },
+            "delivery": {
+              "items": {
+                "type": "object"
+              },
+              "title": "Delivery",
+              "type": "array"
+            }
+          },
+          "required": [
+            "job_id",
+            "delivery"
+          ],
+          "type": "object",
+          "additionalProperties": false,
+          "title": "submit_deliveryArguments"
+        },
+        "outputSchema": {
+          "type": "object",
+          "additionalProperties": true,
+          "title": "submit_deliveryDictOutput"
+        }
+      },
+      {
+        "name": "get_result",
+        "description": "Read an immutable check report, settlement status and terminal receipt.",
+        "inputSchema": {
+          "properties": {
+            "job_id": {
+              "title": "Job Id",
+              "type": "string"
+            },
+            "submission_version": {
+              "title": "Submission Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "job_id",
+            "submission_version"
+          ],
+          "type": "object",
+          "additionalProperties": false,
+          "title": "get_resultArguments"
+        },
+        "outputSchema": {
+          "type": "object",
+          "additionalProperties": true,
+          "title": "get_resultDictOutput"
+        }
+      },
+      {
+        "name": "challenge_result",
+        "description": "Challenge current check provenance, or record a provider's failure dispute.",
+        "inputSchema": {
+          "properties": {
+            "job_id": {
+              "title": "Job Id",
+              "type": "string"
+            },
+            "submission_version": {
+              "title": "Submission Version",
+              "type": "integer"
+            },
+            "reason_code": {
+              "title": "Reason Code",
+              "type": "string"
+            }
+          },
+          "required": [
+            "job_id",
+            "submission_version",
+            "reason_code"
+          ],
+          "type": "object",
+          "additionalProperties": false,
+          "title": "challenge_resultArguments"
+        },
+        "outputSchema": {
+          "type": "object",
+          "additionalProperties": true,
+          "title": "challenge_resultDictOutput"
+        }
+      },
+      {
+        "name": "retrieve_delivery",
+        "description": "Buyer: retrieve the current delivery only after confirmed simulated release.",
+        "inputSchema": {
+          "properties": {
+            "job_id": {
+              "title": "Job Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "job_id"
+          ],
+          "type": "object",
+          "additionalProperties": false,
+          "title": "retrieve_deliveryArguments"
+        },
+        "outputSchema": {
+          "type": "object",
+          "additionalProperties": true,
+          "title": "retrieve_deliveryDictOutput"
+        }
+      }
+    ],
+    "request_started_at": 1794976518.156182,
+    "response_received_at": 1794976518.198692,
+    "sdk_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"error\": {\n    \"code\": \"INVALID_TERMS\",\n    \"message\": \"Required source columns are missing\",\n    \"details\": {\n      \"missing_columns\": [\n        \"Order\",\n        \"Units\",\n        \"Price\"\n      ],\n      \"received_columns\": [\n        \"order_no\",\n        \"client\",\n        \"qty\",\n        \"unit_price\"\n      ]\n    }\n  }\n}"
+        }
+      ],
+      "structuredContent": {
+        "error": {
+          "code": "INVALID_TERMS",
+          "message": "Required source columns are missing",
+          "details": {
+            "missing_columns": [
+              "Order",
+              "Units",
+              "Price"
+            ],
+            "received_columns": [
+              "order_no",
+              "client",
+              "qty",
+              "unit_price"
+            ]
+          }
+        }
+      },
+      "isError": false,
+      "resultType": "complete"
+    },
+    "business_response": {
+      "error": {
+        "code": "INVALID_TERMS",
+        "message": "Required source columns are missing",
+        "details": {
+          "missing_columns": [
+            "Order",
+            "Units",
+            "Price"
+          ],
+          "received_columns": [
+            "order_no",
+            "client",
+            "qty",
+            "unit_price"
+          ]
+        }
+      }
+    },
+    "finished_at": 1794976518.223546
+  },
+  "business_response": {
+    "error": {
+      "code": "INVALID_TERMS",
+      "message": "Required source columns are missing",
+      "details": {
+        "missing_columns": [
+          "Order",
+          "Units",
+          "Price"
+        ],
+        "received_columns": [
+          "order_no",
+          "client",
+          "qty",
+          "unit_price"
+        ]
+      }
+    }
+  },
+  "exchange": {
+    "request_id": 3,
+    "request_at": 1794976518.157888,
+    "response_at": 1794976518.159683,
+    "matched": true
+  },
+  "state": {
+    "read_only_verified": true,
+    "table_counts": {
+      "jobs": 0,
+      "agreement_versions": 0,
+      "acceptances": 0,
+      "submissions": 0,
+      "check_results": 0,
+      "challenges": 0,
+      "settlement_events": 0
+    },
+    "settlement_events": {},
+    "zero_state_changes_verified": true
+  },
+  "worker_exit_code": 0,
+  "finished_at": 1794976518.304576
+}

@@ -81,8 +81,19 @@ or credentials are used. Compare v0/v1 source, client settings, rejection and
 state checks independently from diagnostic richness. Richer feedback alone does
 not establish improved agent success.
 
-The formal comparison is retained with local raw evidence. The final versioned
-handoff, independent-checkout verification and reviewed publication remain Y5.
+The reviewed boundary/setup subset is in [evidence/hw9](evidence/hw9/README.md):
+
+```sh
+python3.11 evidence/hw9/verify.py
+```
+
+This offline verifier checks hashes, matched exchanges, diagnostics and recorded
+state exports; it does not open an unpublished database, run an experiment or
+score the main task. See [You's results](HW9_YOU_RESULTS.md) and the
+[self-contained S1–S5 handoff](HW9_HANDOFF.md). Raw originals remain local.
+Y5 requires independent local reconstruction, owner-approved publication,
+anonymous public-clone offline verification and accepted runtime-repository
+write access for Sheila. Technical preparation alone is not full Y5 completion.
 Main task files/data belong to Sheila's S1 and are intentionally absent. No HW9
 main cold-start result is claimed. No historical benchmark behavior has changed.
 

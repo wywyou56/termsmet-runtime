@@ -1,16 +1,19 @@
-# HW9 technical handoff — interim baseline and interface contract
+# HW9 technical handoff — You Wu to Sheila Hsu
 
-**This is not the final Y5 handoff.** Y1 and the Y2 execution tools are implemented;
-deterministic checks exercise actual MCP processes and synthetic CLI clients.
+**Publication and collaborator access must be confirmed before transfer.**
+Y1–Y4 are implemented and verified; the results and reviewed evidence are in
+`HW9_YOU_RESULTS.md` and `evidence/hw9/`. Deterministic checks exercise actual MCP
+processes and synthetic CLI clients.
 The real restricted Claude preflight passed at clean runtime revision
 `4b91a623c5d6f0443d5df8a302da032aec5595ea` (local `preflight-y2-04`, one matched
 actual `list_templates` call, exit 0). Y3 preserved the generic boundary response
 at `hw9-docs-v0`, commit `c1f536295bd0184a7e1a0684fc388d59d9f245b9`.
-Y4 implements the additive missing/received-column diagnostic; its formal rerun
-is recorded separately from the clean Y4 revision. Y5 final reproduction,
-publication, access checks and the final tag remain pending.
-No main cold-start experiment has been run. The final handoff will include the
-full Y1–Y5 results and Sheila's self-contained S1–S5 instructions.
+Y4 recorded its successful structured rerun at
+`7d70e99801c512d5d7e4653f0cf451ed33eb4b45`, preserving the baseline. The Y5
+reconstruction record identifies the tested candidate and runtime hashes;
+publication, its anonymous-clone check and accepted write access are separate
+acceptance conditions. No main cold-start experiment has been run. The S1–S5
+contract below is self-contained; no earlier chat or private planning file is needed.
 
 TermsMet remains an MCP service. The new tools run Claude Code clients; they do
 not implement agent reasoning or choose negotiation/submission/settlement calls.
@@ -20,18 +23,37 @@ imported. The historical HW7 harness and server defaults are unchanged.
 ## Install and verify setup
 
 The runtime is `https://github.com/wywyou56/termsmet-runtime`. This work is on
-local branch `hw9`; publication is reserved for Y5. Python 3.11.5, MCP 2.3.0 and
+branch `hw9`; links become usable after owner-approved publication. Python 3.11.5, MCP 2.3.0 and
 Claude Code 2.1.317 were observed during Y2. Python patch versions are recorded,
 not used as an exact-patch rejection gate. POSIX process groups (macOS/Linux)
 are required by this launcher.
 
 ```sh
+git clone --branch hw9 https://github.com/wywyou56/termsmet-runtime.git
+cd termsmet-runtime
+git rev-parse HEAD
+git rev-parse 'hw9-v1^{commit}'
 python3.11 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 .venv/bin/python -m unittest discover -s tests -v
+.venv/bin/python evidence/hw9/verify.py
 .venv/bin/python -m coldstart.preflight \
   --out runtime/hw9/preflight-01 --model claude-haiku-5-5 --effort medium
 ```
+
+Before editing, require the two printed commits to equal the full handoff hash
+in the owner's message. A mismatch means you are not at the agreed handoff;
+do not reset unrelated work. `hw9-docs-v0` remains the historical baseline and
+`hw9-v1` the immutable technical handoff. Do not move either tag. You owns `hw9`
+until the handoff message; Sheila owns it afterward.
+
+Versioned documentation after publication:
+[guide](https://github.com/wywyou56/termsmet-runtime/blob/hw9-v1/AGENT_GUIDE.md),
+[results](https://github.com/wywyou56/termsmet-runtime/blob/hw9-v1/HW9_YOU_RESULTS.md),
+[handoff](https://github.com/wywyou56/termsmet-runtime/blob/hw9-v1/HW9_HANDOFF.md),
+[reviewed evidence](https://github.com/wywyou56/termsmet-runtime/tree/hw9-v1/evidence/hw9).
+Use your own authorized model access. You do not need You's terminal, environment,
+private benchmark, local evidence directories, credential file or earlier chat.
 
 Supply `ANTHROPIC_API_KEY` privately through the invoking environment. Do not put
 it in a command, task, guide, repository file, manifest, or MCP config. The
@@ -150,7 +172,7 @@ The intended later invocation, **after Sheila creates S1 inputs**, is:
   --model claude-haiku-5-5 --effort medium
 ```
 
-Those task/data files are intentionally absent at Y2. Do not create or run the
+Those task/data files are intentionally absent from You's half. Do not create or run the
 main experiment as part of You's half. Each task template must contain exactly
 one `{{AGENT_GUIDE}}`; the buyer also needs exactly one `{{SOURCE_CSV_JSON}}`,
 while the provider must have none. Unknown/unclosed placeholders are rejected.
@@ -255,12 +277,192 @@ Temporary live state is deleted only after successful cleanup and backup, or
 when there was no database to preserve. Backup/cleanup failures retain available
 evidence and live state. Preserve the whole failed output directory for diagnosis.
 
-## Work still required
+## Verification, publication and access status
 
-Y2 passed its actual restricted Claude preflight; that is setup verification,
-not the main cold-start result. The original Y3 unsupported-input observation
-remains preserved for the Y4 comparison. Y5 must provide the final results/handoff,
-independent-checkout verification, reviewed publication, tags, and confirmed
-Sheila access to this runtime repository. Y4 authorizes a local commit and one
-fresh improved boundary attempt only. Publication, the final tag and the main
-cold-start run remain outside Y4.
+Run the offline package verifier without a model key. It checks file hashes,
+matched calls, diagnostics, recorded state exports and actual preflight evidence.
+It is not an experiment runner or the main-task scorer. Exported counts and
+snapshot hashes are recorded evidence, not independent inspection of an
+unpublished database. Read the package manifest for original/published hashes
+and explicit path/account-metadata sanitization. Raw originals are preserved.
+
+Y5 uses exactly two reconstruction checks: one independent local clone with a
+fresh environment, all tests, offline verification and one actual restricted
+preflight; then an anonymous public clone of the final commit for offline
+verification after publication. The candidate revision and actual results are
+recorded in `evidence/hw9/reconstruction.json`; runtime hashes must remain
+unchanged between candidate and final commit. Documentation/evidence may change.
+
+The owner must authorize the concrete final branch/tag hashes before normal
+publication. No force-push, tag movement or merge into historical `main` is needed.
+The final owner-forwarded message supplies the full handoff hash and status.
+Access must be accepted write access for `sheilahf860316` on
+`wywyou56/termsmet-runtime`, not merely on the Town fork. Public cloning is not
+proof of write access. If it cannot be verified, report **Technical handoff ready;
+collaborator access pending.** Do not treat Y5 as fully complete.
+
+## Sheila S1 — Restore and freeze the new meaningful task
+
+1. Follow the clone/install commands, verify the exact handoff hash, read the
+   guide, run tests/offline verification, and run preflight using your own model
+   access. Preserve failed attempts with new numbered output directories. Confirm
+   the selected model/effort really works; never silently substitute during a run.
+2. Create `coldstart/data/H9.csv`: eight new synthetic orders with
+   `Order,Customer,Units,Price`, unique nonempty string IDs, positive integer
+   quantities and positive prices. Include a half-cent unit price, an order
+   totaling exactly $100, one above $100 and one below $100.
+3. Independently hand-calculate `H9_expected_delivery.json` and
+   `H9_expected_report.json`. Do not import the production parser/checker.
+   Convert with Decimal/ROUND_HALF_UP, round unit cents first, then multiply.
+   Cross-check the arithmetic a second time before any formal main run.
+4. The buyer's final output is one JSON report:
+
+   ```json
+   {"job_id":"<observed job ID>","order_count":8,"total_quantity":0,"total_amount_usd":"0.00","approval_orders":[{"order_id":"<string>","total_amount_usd":"0.00"}]}
+   ```
+
+   The numeric values above illustrate types only, not an expected answer.
+   Use actual integer counts/quantity, two-decimal dollar strings, and approval
+   orders whose `total_cents` is **strictly greater than 10000**. Compare lists by
+   order ID; an empty approval list is valid in general. Only substitute the
+   observed job ID into the independent expected report.
+5. Write goal-level buyer/provider English tasks with the required placeholders.
+   Buyer receives source/guide and should obtain a verified released delivery
+   and use it for the report. Provider receives the guide and authorized tools
+   and should complete an available extraction job and observe its terminal
+   outcome. No call sequence, mandatory version, expected answer, prepared draft
+   or forced FAIL/repair. Never expose the independent expected artifacts to clients.
+6. Write `coldstart/criteria.md` before execution, separate from the preserved
+   boundary criteria. Commit data, oracles, tasks and criteria; record the full
+   pre-run revision and hashes. Source already available to the buyer means
+   report accuracy/timing is evidence of checkable downstream behavior, not
+   proof of its internal causal reasoning.
+
+## Sheila S2 — Implement the independent main-run checker
+
+Provide this interface, without calling the service or editing original evidence:
+
+```sh
+.venv/bin/python -m coldstart.check_run \
+  --run runtime/hw9/main-01 \
+  --expected-delivery coldstart/data/H9_expected_delivery.json \
+  --expected-report coldstart/data/H9_expected_report.json
+```
+
+Write `check.json`. Open the snapshot read-only; do not use immutable mode on a
+potentially WAL-backed live file. These predefined checks govern the result:
+
+| ID | Requirement | Evidence |
+| --- | --- | --- |
+| C1 | Both accepted the same current agreement version; no required v2 | Receipt/database and actual calls |
+| C2 | Simulated funding exists before submission | Settlement/submission records |
+| C3 | Actual provider submission has current server PASS | Provider requests and persisted result |
+| C4 | Exactly one simulated release, no refund/conflict, not before review deadline | Snapshot |
+| C5 | Buyer actually received the released delivery, independently equal to the oracle | Successful retrieval response; strict fields/types and no missing/duplicate IDs |
+| C6 | Final buyer report matches all oracle fields and was emitted after retrieval response | Timestamped output and independent report oracle |
+| C7 | Manual help disclosed; each role attempted at most 60 calls with no exhaustion; within 900 seconds | Manifest, proxy events and exits |
+
+All C1–C6 passing establishes the useful main result. Report C7 and execution
+status separately. Missing, malformed or contradictory evidence is incomplete,
+not passed; never infer success from process exit or an agent's claim. Parse the
+final answer as one JSON object, optionally one enclosing Markdown JSON fence.
+Reject competing objects or unsupported prose rather than guessing. Enforce
+strict integer types (booleans are not integers), required fields, unique IDs,
+and order-independent comparison of order lists.
+
+Record friction separately: business errors, calls by role, repairs, UNKNOWNs,
+exits, elapsed time and short exact excerpts of misunderstanding. Separate
+interface/project issues from authentication, configuration, model availability,
+launcher and budget issues; evidence can support more than one cause.
+Test valid synthetic evidence, wrong totals/types, absent retrieval, reports
+before retrieval, missing/malformed final JSON, duplicate releases and incomplete
+runs. Preflight traces must never score as a completed transaction.
+
+## Sheila S3 — Run and interpret the cold start
+
+Run the documented `coldstart.launch` command only after S1/S2 are committed and
+the model, guide, tasks, source, oracles and preflight revision/hashes are frozen.
+Use two new sessions, the same working model/effort, two-second review,
+five-minute first submission, 900-second wall cap and 60 calls per role.
+
+Give no mid-run coaching, repairs, answers, service calls or message relay. A
+passive observer may display actual events without advancing jobs. Keep every
+attempt, run the independent checker, and extract the request → response →
+retrieval → report chain or exact blocking interaction. A correct report without
+retrieval evidence is insufficient. A setup defect can be fixed and rerun under
+a new numbered directory; retain the original attempt and disclose the change.
+A substantive interface failure is acceptable evidence; do not keep rerunning
+until success or depend on another routine feature cycle from You.
+
+Label the attempt self-run with fresh agent sessions. Another teammate pressing
+start does not make it independent adoption. One substantive main attempt is
+required; repetitions/external testers are optional and cut first if time is short.
+
+## Sheila S4 — Four final slides and embedded product demo
+
+Expand/replace the existing HW8 TermsMet slide so the team has exactly four
+contiguous final slides in the shared Fall 2026 Demo Day deck. Preserve the blank
+template and other teams' content:
+
+| Slide | Content | Time |
+| --- | --- | --- |
+| 1 | Problem, buyer/provider users, shared acceptance infrastructure | 25 seconds |
+| 2 | Actual MCP/SQLite architecture; Agree → Fund → Check/repair → Review/release → Retrieve; embedded demo | 60 seconds including video |
+| 3 | Accurate prior HW7/HW8 results and actual HW9 main/boundary outcomes | 40 seconds |
+| 4 | Failures, limitations and evidence-supported next steps | 25 seconds |
+
+Reuse the accurate HW6 Unlisted product-demo video if available, labeling it as
+product demonstration rather than HW9 cold-start footage. If unavailable or
+inaccurate, make a short truthful replacement from actual execution. Embed the
+YouTube video in live Slides, set Play automatically, and verify in presentation
+mode; confirm Unlisted visibility. A link or PDF cannot prove playback settings.
+Locate the shared deck/demo through your own team/course access; those course
+assets are not a runtime dependency and no further routine deliverable from You
+is required to begin S1.
+
+Historical evidence source:
+[HW7 panels](https://github.com/sheilahf860316/termsmet-hw7-evidence/blob/main/fresh-package/summary/panels.md).
+Keep these qualifications when using prior results: withholding A/B differences
+execute the designed policy rather than discovering a behavioral law; detailed
+feedback versus verdict-only completion was 10/12 versus 4/12 across development
+and fresh repair cases, with small-sample/H06 limits. Across 88 scored trials,
+zero incorrect releases were observed among 69 releases (65 excludes four A2
+retests). A2 reduced calls but fresh completion was 6/12 versus A's 10/12, not an
+overall improvement. HW8 Town participants were scripted; lost-PASS recovery had
+one rejected retry, two accepted submissions total and one release. Do not call
+that recovery “without resubmitting.” HW9 claims must follow actual traces/checks.
+
+## Sheila S5 — Final evidence, PDF, reproduction and submission
+
+Produce a short team PDF: ideally 2–3 usability-evidence pages followed by an
+export of the four slides. Include project/team/contributions, versioned guide
+and runtime links/revisions, live-deck slide link, reproduction commands, setup
+and what each client received, predefined checks, exact interaction excerpts,
+final report or evidenced failure, self-run/manual-help disclosure, and B1
+before/limitation/change/rerun evidence. State what improved and what is unproven.
+
+Publish a reviewed subset with runtime/guide/task/source hashes, manifest,
+necessary requests/responses, actual final report, independent expected artifacts,
+`check.json`, and boundary comparison. Never commit credentials, personal paths,
+caches, private logs or generated databases. If public reconstruction of the
+main checker requires a SQLite snapshot, use a separately owner-authorized,
+reviewed synthetic artifact download with its hash and commands, not a Git
+commit of the database. Exports remain recorded evidence, not independent
+inspection of an omitted raw database.
+
+In a separate checkout, follow documented installation/checker commands against
+the published evidence. A second live main run is optional, not a prerequisite.
+Run relevant tests and `git diff --check`, review the public diff and publish
+normally without force-pushing or moving tags; record the full submission
+revision. Confirm exactly four contiguous TermsMet slides, embedded playable
+Unlisted video, automatic playback and preserved blank template. Both members
+upload the same final PDF to their own Canvas submissions. Confirm the actual
+deadline in Canvas; do not infer it from an earlier schedule. No new Town PR is
+required; prior integration links are historical evidence only.
+
+You's contributions: server baseline/API preparation, execution tooling,
+documentation, setup/boundary evidence and diagnostic improvement. Sheila's
+contributions: new H9 task/oracles, independent checker, main experiment,
+interpretation and final course artifacts. After transfer, routine setup fixes,
+navigation, analysis and packaging are Sheila's work. Escalate a true blocker
+only with a concrete version, command, reproduction and error.
