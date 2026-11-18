@@ -1,6 +1,7 @@
 # HW9 technical handoff — You Wu to Sheila Hsu
 
 **Publication and collaborator access must be confirmed before transfer.**
+Current status: **Technical handoff ready; collaborator access pending.**
 Y1–Y4 are implemented and verified; the results and reviewed evidence are in
 `HW9_YOU_RESULTS.md` and `evidence/hw9/`. Deterministic checks exercise actual MCP
 processes and synthetic CLI clients.
@@ -34,7 +35,7 @@ cd termsmet-runtime
 git rev-parse HEAD
 git rev-parse 'hw9-v1^{commit}'
 python3.11 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m pip install --timeout 15 --retries 1 -r requirements.txt
 .venv/bin/python -m unittest discover -s tests -v
 .venv/bin/python evidence/hw9/verify.py
 .venv/bin/python -m coldstart.preflight \
@@ -292,6 +293,16 @@ preflight; then an anonymous public clone of the final commit for offline
 verification after publication. The candidate revision and actual results are
 recorded in `evidence/hw9/reconstruction.json`; runtime hashes must remain
 unchanged between candidate and final commit. Documentation/evidence may change.
+
+The independent candidate was `ffa9f27c6e2897529ad2e08a99e3f9c13a61e517`.
+It installed fresh pinned dependencies (after a sandbox-DNS failure and a
+network-enabled retry), passed **50 tests**, verified the offline package, and
+passed one real restricted `preflight-y5-01` with exactly one actual matched
+`list_templates` exchange. Python was 3.11.5, MCP 2.3.0, Claude Code 2.1.317,
+model `claude-haiku-5-5`, medium effort. Its full dependency list and command
+results are in the reconstruction record. The final package contains the
+reviewed evidence for both successful setup preflights. These checks do not
+claim public availability before publication or confirmed collaborator access.
 
 The owner must authorize the concrete final branch/tag hashes before normal
 publication. No force-push, tag movement or merge into historical `main` is needed.

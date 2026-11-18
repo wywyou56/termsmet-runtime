@@ -1,0 +1,9 @@
+{
+  "repository": "wywyou56/termsmet-runtime",
+  "collaborator": "sheilahf860316",
+  "required_permission": "accepted write access",
+  "status": "unverified",
+  "observed_result": "GitHub integration returned HTTP 403: Resource not accessible by integration",
+  "next_step": "Owner verifies accepted write access on this repository; a pending invitation or access to the Town fork is insufficient.",
+  "completion_status": "Technical handoff ready; collaborator access pending."
+}

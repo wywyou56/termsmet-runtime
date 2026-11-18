@@ -24,9 +24,12 @@ server, experiment, or database connection, and it does not implement C1–C7.
 - `attempts.json` discloses the earlier blocked setup attempts. Successful setup
   evidence includes actual MCP traffic, advertised inventory, and complete final
   Claude output; it is not inferred from an agent's claim.
-- The independent Y5 reconstruction report and preflight are added after the
-  fresh-clone verification. The reconstruction candidate revision is recorded
-  explicitly; final documentation/evidence updates do not change runtime code.
+- `preflight-y5-01/` and `reconstruction.json` record the independent local
+  clone: fresh installation, 50 passing tests, offline verification, and one
+  successful real restricted preflight. Candidate
+  `ffa9f27c6e2897529ad2e08a99e3f9c13a61e517` is explicit; final documentation/
+  evidence updates do not change runtime code. Anonymous public-clone offline
+  verification remains pending owner-approved publication.
 
 `manifest.json` lists each published file hash and its source/provenance hash.
 `origins` documents transformations. Source labels are portable evidence labels,

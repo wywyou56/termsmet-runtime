@@ -94,14 +94,39 @@ bounded real-time polling accepting an already `RELEASED` state, actual PASS,
 release and retrieval, and exactly one simulated release. Retrieval denial was
 checked before acceptance, not during a timing-sensitive review race.
 
-Y5 adds only the offline evidence verifier and its focused integrity tests, plus
-documentation and reviewed exports. The candidate independent local clone will
-install fresh dependencies, run the full tests, verify this package, and make one
-real restricted preflight. Actual candidate/final revisions and commands are
-recorded in `evidence/hw9/reconstruction.json` once this check is complete. The
-second reconstruction is the anonymous public clone after publication approval;
-it performs offline verification of the final commit. No third checkout is
-required. No main task or old benchmark is run.
+Y5 adds only the offline evidence verifier and six focused integrity tests, plus
+documentation and reviewed exports. The independent local clone checked out
+candidate `ffa9f27c6e2897529ad2e08a99e3f9c13a61e517` with a new virtual environment.
+The first normal dependency install failed because the execution sandbox could
+not resolve the package index. A network-enabled retry installed the pinned
+requirements normally; this was a setup/environment issue, not a service failure.
+
+Actual independent-clone commands/results:
+
+| Command | Result |
+| --- | --- |
+| `python3.11 -m venv .venv` | Fresh environment, Python 3.11.5 |
+| `.venv/bin/python -m pip install --timeout 15 --retries 1 -r requirements.txt` | Network-enabled retry exit 0; MCP 2.3.0 and recorded transitive versions |
+| `.venv/bin/python -m unittest discover -s tests -v` | **50 passed**, 63.617 seconds |
+| `.venv/bin/python evidence/hw9/verify.py` | Exit 0; candidate package: 22 files, two B1 runs, one prior successful preflight |
+| `.venv/bin/python -m pip check` | No broken requirements |
+| `.venv/bin/python -m coldstart.preflight --out runtime/hw9/preflight-y5-01 --model claude-haiku-5-5 --effort medium` | Exit 0, passed, exactly one actual matched `list_templates` call |
+
+The real restricted preflight recorded clean candidate state, eleven advertised
+tools, Claude Code 2.1.317, the selected model/effort, successful SDK shared state,
+and confirmed cleanup/backup. Authorized access was supplied only to the invoking
+environment; no credential file was copied into the clone, and the saved-evidence
+scan found no credential matches. This was setup validation with no mid-run
+coaching, not the main cold-start experiment.
+
+Full command results, installed package versions and the 15 runtime-file hashes
+are in `evidence/hw9/reconstruction.json`. Runtime, verifier and test code are
+unchanged between candidate and final preparation; only documentation and reviewed
+evidence are finalized afterward. The final reviewed package verifies 32 files,
+two B1 runs and both successful restricted preflights. The second reconstruction
+is the anonymous public clone after publication approval, with offline verification
+of the final commit. That check remains pending; no third checkout or extra live
+preflight is required. No formal B1 attempt, main task or old benchmark was rerun.
 
 ## Evidence, interpretation and remaining acceptance
 

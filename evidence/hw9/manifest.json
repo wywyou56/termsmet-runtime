@@ -2,7 +2,8 @@
   "schema_version": 1,
   "scope": "scripted boundary and setup evidence; no main-task scoring",
   "preflights": [
-    "preflight-y2-04"
+    "preflight-y2-04",
+    "preflight-y5-01"
   ],
   "state_evidence": "Recorded exports plus snapshot hashes, not independent inspection of an unpublished database.",
   "files": {
@@ -26,7 +27,17 @@
     "preflight-y2-04/sdk/sdk.json": "86e7e9166a2a573f486a714b1469bcd92dd730485c096a7818d15237d43774e8",
     "preflight-y2-04/sdk/mcp-buyer.jsonl": "1c087ce67e2c2d74a044850257eeed12a1254c563a7e0f0b77c7c88738833e71",
     "preflight-y2-04/sdk/mcp-provider.jsonl": "8bcac01be42c9f2ccb3cd8849df38f00c0eb68810e118f1f0dca1e7ea1c1e55d",
-    "README.md": "25efd71baf288c1b8272a290dcb17d1ba3fac0797f74ccf7a65e4581863f692f",
+    "preflight-y5-01/preflight.json": "3521e91933641842f413adb52de3a875947b5332ca3dcbee59f2cf165e6ebf98",
+    "preflight-y5-01/claude/manifest.json": "6098bcebcc3585b288d25b725e1dce0e4869f39549e0d7f71326359604070bb9",
+    "preflight-y5-01/claude/buyer.jsonl": "de0b97c78683b278fb56e7b0a61088ea6cdae8af76ace95c3136ed4e54a3dd5f",
+    "preflight-y5-01/claude/mcp-buyer.jsonl": "c3c1af1ad74060143850fe30c7e07e0f12a23a3d6e3bfd01a0f6f562c8bf54b9",
+    "preflight-y5-01/claude/buyer-control.jsonl": "b08968c61f0dbde118e540b64c32c7373717b00768d7bbc085795c0a434f152c",
+    "preflight-y5-01/sdk/sdk.json": "f0514a1670e5280cf42c96e443b10ca4c028baa601c15c8d18c50794a8f0a22e",
+    "preflight-y5-01/sdk/mcp-buyer.jsonl": "f450459ec0fa763fe3b2e1bd8d44953ff3cbb2f2323c521fec820b0ae4692f9e",
+    "preflight-y5-01/sdk/mcp-provider.jsonl": "83e0700029b60aee9d274b0bf780a67c04256396dad064e50bb1c095f0949ba5",
+    "reconstruction.json": "badcc792bb19e09b469bf1fb0c5af326a9697888fdf7804d8f50c910c34761fb",
+    "README.md": "fac0ff5212c6a165e4fd8c786f83097c0197251cbefb83c79cefaaa6ad9c9812",
+    "access-status.json": "3b41b44f85180d30317d5147ee8be264060c348850c024141c86611518ffa647",
     "verify.py": "bc13834a818b870b81363224e9f8bf4735bd1d12b9087efed8d6f2c4a6190d1a"
   },
   "origins": {
@@ -164,10 +175,74 @@
       "published_sha256": "8bcac01be42c9f2ccb3cd8849df38f00c0eb68810e118f1f0dca1e7ea1c1e55d",
       "transformations": []
     },
+    "preflight-y5-01/preflight.json": {
+      "source": "independent-reconstruction/preflight-y5-01/preflight.json",
+      "source_sha256": "3521e91933641842f413adb52de3a875947b5332ca3dcbee59f2cf165e6ebf98",
+      "published_sha256": "3521e91933641842f413adb52de3a875947b5332ca3dcbee59f2cf165e6ebf98",
+      "transformations": []
+    },
+    "preflight-y5-01/claude/manifest.json": {
+      "source": "independent-reconstruction/preflight-y5-01/claude/manifest.json",
+      "source_sha256": "080d3b5139d352231a43f1f9506963143423095037efb48a3daed3d8a639b4e4",
+      "published_sha256": "6098bcebcc3585b288d25b725e1dce0e4869f39549e0d7f71326359604070bb9",
+      "transformations": [
+        "machine paths and session/account metadata sanitized; affected JSON containers reserialized; business payloads and protocol IDs unchanged"
+      ]
+    },
+    "preflight-y5-01/claude/buyer.jsonl": {
+      "source": "independent-reconstruction/preflight-y5-01/claude/buyer.jsonl",
+      "source_sha256": "837c7c2ec7f9bf62058bfbab828b5f2765f6c7424c0ab732bf0aa37d0cbaa4ac",
+      "published_sha256": "de0b97c78683b278fb56e7b0a61088ea6cdae8af76ace95c3136ed4e54a3dd5f",
+      "transformations": [
+        "machine paths and session/account metadata sanitized; affected JSON containers reserialized; business payloads and protocol IDs unchanged"
+      ]
+    },
+    "preflight-y5-01/claude/mcp-buyer.jsonl": {
+      "source": "independent-reconstruction/preflight-y5-01/claude/mcp-buyer.jsonl",
+      "source_sha256": "c3c1af1ad74060143850fe30c7e07e0f12a23a3d6e3bfd01a0f6f562c8bf54b9",
+      "published_sha256": "c3c1af1ad74060143850fe30c7e07e0f12a23a3d6e3bfd01a0f6f562c8bf54b9",
+      "transformations": []
+    },
+    "preflight-y5-01/claude/buyer-control.jsonl": {
+      "source": "independent-reconstruction/preflight-y5-01/claude/buyer-control.jsonl",
+      "source_sha256": "b08968c61f0dbde118e540b64c32c7373717b00768d7bbc085795c0a434f152c",
+      "published_sha256": "b08968c61f0dbde118e540b64c32c7373717b00768d7bbc085795c0a434f152c",
+      "transformations": []
+    },
+    "preflight-y5-01/sdk/sdk.json": {
+      "source": "independent-reconstruction/preflight-y5-01/sdk/sdk.json",
+      "source_sha256": "f0514a1670e5280cf42c96e443b10ca4c028baa601c15c8d18c50794a8f0a22e",
+      "published_sha256": "f0514a1670e5280cf42c96e443b10ca4c028baa601c15c8d18c50794a8f0a22e",
+      "transformations": []
+    },
+    "preflight-y5-01/sdk/mcp-buyer.jsonl": {
+      "source": "independent-reconstruction/preflight-y5-01/sdk/mcp-buyer.jsonl",
+      "source_sha256": "f450459ec0fa763fe3b2e1bd8d44953ff3cbb2f2323c521fec820b0ae4692f9e",
+      "published_sha256": "f450459ec0fa763fe3b2e1bd8d44953ff3cbb2f2323c521fec820b0ae4692f9e",
+      "transformations": []
+    },
+    "preflight-y5-01/sdk/mcp-provider.jsonl": {
+      "source": "independent-reconstruction/preflight-y5-01/sdk/mcp-provider.jsonl",
+      "source_sha256": "83e0700029b60aee9d274b0bf780a67c04256396dad064e50bb1c095f0949ba5",
+      "published_sha256": "83e0700029b60aee9d274b0bf780a67c04256396dad064e50bb1c095f0949ba5",
+      "transformations": []
+    },
+    "reconstruction.json": {
+      "source": "independent-reconstruction/reconstruction.json",
+      "source_sha256": "badcc792bb19e09b469bf1fb0c5af326a9697888fdf7804d8f50c910c34761fb",
+      "published_sha256": "badcc792bb19e09b469bf1fb0c5af326a9697888fdf7804d8f50c910c34761fb",
+      "transformations": []
+    },
     "README.md": {
       "source": "repository:evidence/hw9/README.md",
-      "source_sha256": "25efd71baf288c1b8272a290dcb17d1ba3fac0797f74ccf7a65e4581863f692f",
-      "published_sha256": "25efd71baf288c1b8272a290dcb17d1ba3fac0797f74ccf7a65e4581863f692f",
+      "source_sha256": "fac0ff5212c6a165e4fd8c786f83097c0197251cbefb83c79cefaaa6ad9c9812",
+      "published_sha256": "fac0ff5212c6a165e4fd8c786f83097c0197251cbefb83c79cefaaa6ad9c9812",
+      "transformations": []
+    },
+    "access-status.json": {
+      "source": "repository:evidence/hw9/access-status.json",
+      "source_sha256": "3b41b44f85180d30317d5147ee8be264060c348850c024141c86611518ffa647",
+      "published_sha256": "3b41b44f85180d30317d5147ee8be264060c348850c024141c86611518ffa647",
       "transformations": []
     },
     "verify.py": {

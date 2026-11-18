@@ -1,0 +1,196 @@
+{
+  "kind": "independent_local_clone_reconstruction_not_main_cold_start",
+  "candidate_commit": "ffa9f27c6e2897529ad2e08a99e3f9c13a61e517",
+  "clone_method": "git clone --no-local --branch hw9 <LOCAL_RUNTIME_REPOSITORY> <RECONSTRUCTION_ROOT>",
+  "fresh_environment": true,
+  "python": "3.11.5 (v3.11.5:cce6ba91b3, Aug 24 2023, 10:50:31) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "mcp_version": "2.3.0",
+  "installed_packages": [
+    {
+      "name": "annotated-types",
+      "version": "0.8.0"
+    },
+    {
+      "name": "anyio",
+      "version": "4.16.0"
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0"
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1"
+    },
+    {
+      "name": "click",
+      "version": "8.5.1"
+    },
+    {
+      "name": "cryptography",
+      "version": "50.0.2"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0"
+    },
+    {
+      "name": "httpcore2",
+      "version": "2.16.2"
+    },
+    {
+      "name": "httpx2",
+      "version": "2.16.2"
+    },
+    {
+      "name": "idna",
+      "version": "3.20"
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.26.0"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1"
+    },
+    {
+      "name": "mcp",
+      "version": "2.3.0"
+    },
+    {
+      "name": "mcp-types",
+      "version": "2.3.0"
+    },
+    {
+      "name": "opentelemetry-api",
+      "version": "1.45.2"
+    },
+    {
+      "name": "pip",
+      "version": "23.2.1"
+    },
+    {
+      "name": "pycparser",
+      "version": "3.12"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.3"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.50.4"
+    },
+    {
+      "name": "PyJWT",
+      "version": "2.15.1"
+    },
+    {
+      "name": "python-multipart",
+      "version": "0.0.34"
+    },
+    {
+      "name": "referencing",
+      "version": "0.37.0"
+    },
+    {
+      "name": "rpds-py",
+      "version": "2026.9.1"
+    },
+    {
+      "name": "setuptools",
+      "version": "65.5.0"
+    },
+    {
+      "name": "sse-starlette",
+      "version": "3.7.0"
+    },
+    {
+      "name": "starlette",
+      "version": "1.10.0"
+    },
+    {
+      "name": "truststore",
+      "version": "0.10.5"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.5"
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.54.0"
+    }
+  ],
+  "commands": [
+    {
+      "command": "python3.11 -m venv .venv",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python -m pip install --timeout 15 --retries 1 -r requirements.txt",
+      "attempts": [
+        {
+          "exit_code": 1,
+          "classification": "execution-sandbox DNS resolution failure; no matching versions could be fetched"
+        },
+        {
+          "exit_code": 0,
+          "classification": "network-enabled retry; normal pinned dependency installation succeeded"
+        }
+      ]
+    },
+    {
+      "command": ".venv/bin/python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "tests_passed": 50,
+      "elapsed_seconds": 63.617
+    },
+    {
+      "command": ".venv/bin/python evidence/hw9/verify.py",
+      "exit_code": 0,
+      "files_checked": 22,
+      "boundary_runs_checked": 2,
+      "preflights_checked": 1
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python -m coldstart.preflight --out runtime/hw9/preflight-y5-01 --model claude-haiku-5-5 --effort medium",
+      "exit_code": 0,
+      "passed": true,
+      "actual_tool_attempts": 1,
+      "actual_forwarded_calls": 1,
+      "matched_exchange": true
+    }
+  ],
+  "runtime_files_sha256": {
+    "coldstart/__init__.py": "1d0ee4cd452c57b8ebcd56db137bf4dba73f1c526bf4ac83dced5aec832ae61e",
+    "coldstart/_support.py": "97bd7ac438362d894a712ba138a7fa7b2eab863554f29341755baaf8ed7df8ba",
+    "coldstart/boundary_criteria.md": "2e7e092546e79dd667f451c9f4665a0761741de4996e0718535fc693cc5df15a",
+    "coldstart/boundary_probe.py": "f89291090a058aa3d0bf636549a6cf58ee53a7f4666b999d19c8fd361ebf5666",
+    "coldstart/data/B1.csv": "f26d4f490e74852bd8e4e603204f0f5a99230746f6f4aae80eb14143a48b123f",
+    "coldstart/launch.py": "c5665b9ace28bc922dde248e7fa61ffd84215d5cd352ced8160504ec36faa0d5",
+    "coldstart/mcp_proxy.py": "a07110f3f8c62892d229645041fbd0fe6483f25751c9c264027d510dfa85f834",
+    "coldstart/preflight.py": "00dec2c6a999d661a913a0701f7827a584c9a16667f2c187355033771ce88f12",
+    "examples/connect.py": "14a4f74ea93f482bd6cf57813c69b1f7b22fdc51954adc2e7b8ddcf43861b327",
+    "requirements.txt": "60f5ce64a9c068a21e5fc59841ac8ee5b44d5aed3cba57273669468064a421de",
+    "server/__init__.py": "96bded5be1c161ea92e31c595212844947a08a292714753b491e4347916ed9ab",
+    "server/checker.py": "98eeaf75db5e35201b087c56758f649d8347d094f10929723cf61f5125ecb145",
+    "server/mcp_server.py": "97c10a98f27af3d4af97832f3d59cfa885e5842ba2803fb5deb54d2340710bc7",
+    "server/service.py": "283122354e1cd093cc93f05043af67cda6a46dc359d9d56b3fa1873ae1d96094",
+    "server/storage.py": "c12357743f913d2296c21dd2fbf6fd07a2233d8d170a79a9c3e212ec2e2efe57"
+  },
+  "credential_disclosure": "Authorized credential supplied only through invoking environment; file not copied into clone. Saved-evidence scan found no matches. No mid-run coaching.",
+  "post_publication_check": {
+    "status": "pending_publication_approval",
+    "method": "anonymous public clone of final commit; offline evidence verification only; no third reconstruction clone before publication"
+  }
+}

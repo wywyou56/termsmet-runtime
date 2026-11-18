@@ -1,0 +1,59 @@
+{
+  "started_at": 1794978244.200963,
+  "passed": true,
+  "steps": [
+    {
+      "role": "buyer",
+      "initialized": true,
+      "tools": [
+        "list_templates",
+        "propose_agreement",
+        "list_jobs",
+        "get_job",
+        "counter_agreement",
+        "accept_agreement",
+        "fund_job",
+        "submit_delivery",
+        "get_result",
+        "challenge_result",
+        "retrieve_delivery"
+      ]
+    },
+    {
+      "role": "provider",
+      "initialized": true,
+      "tools": [
+        "list_templates",
+        "propose_agreement",
+        "list_jobs",
+        "get_job",
+        "counter_agreement",
+        "accept_agreement",
+        "fund_job",
+        "submit_delivery",
+        "get_result",
+        "challenge_result",
+        "retrieve_delivery"
+      ]
+    }
+  ],
+  "shared_job_id": "job-30f38070089f465c9615ade5821110b6",
+  "source_sha256": "38263b46657ade5dc0f80fdd3e74a4a4faff5947a14168278bfaac82ea27a21a",
+  "status": "passed",
+  "worker_exit_code": 0,
+  "cleanup": {
+    "status": "completed",
+    "process_groups": [
+      79222,
+      79224,
+      79234
+    ],
+    "errors": []
+  },
+  "snapshot": {
+    "status": "available",
+    "path": "termsmet.sqlite",
+    "sha256": "15e9eaa31d0d06ce625f57e0cf2958060b7ce15cfdd611a7f37804817f313c63"
+  },
+  "finished_at": 1794978245.743878
+}

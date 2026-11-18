@@ -1,0 +1,6 @@
+{"timestamp": 1794978246.986573, "event": "proxy_started", "pid": 79258, "pgid": 79258}
+{"timestamp": 1794978246.990494, "event": "server_started", "pid": 79262, "pgid": 79258}
+{"timestamp": 1794978247.512448, "event": "server_inventory_verified", "tools": ["list_templates", "propose_agreement", "list_jobs", "get_job", "counter_agreement", "accept_agreement", "fund_job", "submit_delivery", "get_result", "challenge_result", "retrieve_delivery"]}
+{"timestamp": 1794978249.167437, "event": "tool_attempt", "count": 1, "request_id": 4}
+{"timestamp": 1794978249.167524, "event": "tool_forwarded", "count": 1, "request_id": 4}
+{"timestamp": 1794978252.7209952, "event": "proxy_stopped", "failed": false}

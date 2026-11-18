@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "kind": "preflight_claude",
+  "started_at": 1794978245.744388,
+  "finished_at": 1794978253.078986,
+  "execution_status": "completed",
+  "transaction_status": "not_evaluated",
+  "runtime_commit": "ffa9f27c6e2897529ad2e08a99e3f9c13a61e517",
+  "working_tree_dirty": false,
+  "python": "3.11.5 (v3.11.5:cce6ba91b3, Aug 24 2023, 10:50:31) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "mcp_version": "2.3.0",
+  "model": "claude-haiku-5-5",
+  "effort": "medium",
+  "review_seconds": 2,
+  "first_submit_minutes": 5,
+  "wall_seconds": 60,
+  "tool_limit": 60,
+  "startup_seconds": 15,
+  "manual_help": "none reported",
+  "agents": {
+    "buyer": {
+      "inventory_verified": true,
+      "tool_attempts": 1,
+      "forwarded_calls": 1,
+      "blocked_calls": 0,
+      "usage": {
+        "input_tokens": 6,
+        "cache_creation_input_tokens": 2118,
+        "cache_read_input_tokens": 2028,
+        "output_tokens": 130,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "total_cost_usd": 0.00035063,
+      "stdout_complete": true,
+      "prompt_sha256": "79516a57813a694188ea7a00674f7a4a6cae751ed46e8ed97eb22bbc5bba35f0",
+      "command": [
+        "<HOME>/.local/bin/claude",
+        "-p",
+        "--model",
+        "claude-haiku-5-5",
+        "--effort",
+        "medium",
+        "--mcp-config",
+        "/private<RECONSTRUCTION_ROOT>/runtime/hw9/preflight-y5-01/claude/mcp-buyer.json",
+        "--strict-mcp-config",
+        "--bare",
+        "--setting-sources",
+        "",
+        "--no-chrome",
+        "--disable-slash-commands",
+        "--no-session-persistence",
+        "--tools",
+        "",
+        "--allowedTools",
+        "mcp__termsmet",
+        "--permission-mode",
+        "dontAsk",
+        "--output-format",
+        "stream-json",
+        "--verbose"
+      ],
+      "started_at": 1794978246.385758,
+      "pid": 79248,
+      "inventory_received_at": 1794978247.571572,
+      "advertised_tools": [
+        "mcp__termsmet__accept_agreement",
+        "mcp__termsmet__challenge_result",
+        "mcp__termsmet__counter_agreement",
+        "mcp__termsmet__fund_job",
+        "mcp__termsmet__get_job",
+        "mcp__termsmet__get_result",
+        "mcp__termsmet__list_jobs",
+        "mcp__termsmet__list_templates",
+        "mcp__termsmet__propose_agreement",
+        "mcp__termsmet__retrieve_delivery",
+        "mcp__termsmet__submit_delivery"
+      ],
+      "observed_model": "claude-haiku-5-5",
+      "result_received_at": 1794978252.703549,
+      "result_is_error": false,
+      "modelUsage": {
+        "claude-haiku-5-5": {
+          "inputTokens": 6,
+          "outputTokens": 130,
+          "cacheReadInputTokens": 2028,
+          "cacheCreationInputTokens": 2118,
+          "webSearchRequests": 0,
+          "costUSD": 0.00035063,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "cacheCreationEphemeral5mInputTokens": 0,
+          "cacheCreationEphemeral1hInputTokens": 0,
+          "canonicalModel": "claude-haiku-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "subtype": "success",
+      "exit_observed_at": 1794978253.07535,
+      "exit_code": 0
+    }
+  },
+  "failures": [],
+  "snapshot": {
+    "status": "available",
+    "path": "termsmet.sqlite",
+    "sha256": "527b1c60bd47a59801f7d997ccfd83be02ed34218e5dd74899015ec4e6e6c65b"
+  },
+  "cleanup": {
+    "status": "completed",
+    "process_groups": [
+      79248,
+      79258
+    ],
+    "errors": []
+  },
+  "claude_version": "2.1.317 (Claude Code)",
+  "claude_executable": "<HOME>/.local/bin/claude",
+  "provider_base_url": "https://parley.api.mit.edu",
+  "elapsed_seconds": 7.33361916593276
+}
