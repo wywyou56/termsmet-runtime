@@ -1,0 +1,11 @@
+{
+  "job_id": "<observed job ID>",
+  "order_count": 8,
+  "total_quantity": 48,
+  "total_amount_usd": "610.76",
+  "approval_orders": [
+    {"order_id": "K303", "total_amount_usd": "149.99"},
+    {"order_id": "K304", "total_amount_usd": "100.80"},
+    {"order_id": "K307", "total_amount_usd": "125.00"}
+  ]
+}
