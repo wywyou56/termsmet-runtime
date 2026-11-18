@@ -9,5 +9,12 @@
     "server/checker.py": "3e2c7498efc2667e2f8694b7c9666833b3768f68bc8a48b19176284b40f6b53b",
     "requirements.txt": "60f5ce64a9c068a21e5fc59841ac8ee5b44d5aed3cba57273669468064a421de"
   },
-  "relationship": "Unmodified source files copied into an independent minimal runtime history."
+  "relationship": "Historical baseline: unmodified source files copied into an independent minimal runtime history at runtime commit 7ee09295226d2a41555293f391e13a8c46020031. The current HW9 tree is a derivative; source_file_sha256 retains the original copied-file hashes, not current-tree hashes.",
+  "hw9_derivative": {
+    "baseline_runtime_commit": "7ee09295226d2a41555293f391e13a8c46020031",
+    "changed_copied_files": {
+      "server/service.py": "Y1: expose the existing current_submission_version database value in get_job; no schema or settlement changes."
+    },
+    "additional_work": "Y1 interface guide, official-SDK connection example, focused baseline tests, ignore rules and README updates. Launcher, boundary improvement and final handoff remain pending."
+  }
 }

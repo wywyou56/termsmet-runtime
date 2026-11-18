@@ -333,6 +333,7 @@ class TermsMetService:
             ("review", "review_deadline"), ("recovery", "recovery_deadline"),
         ) if job[column] is not None}
         return {"job_id": job_id, "status": job["status"], "version": job["current_version"],
+                "current_submission_version": job["current_submission_version"],
                 "terms": json.loads(agreement["terms_json"]), "source_csv": agreement["source_csv"],
                 "deadlines": deadlines}
 
