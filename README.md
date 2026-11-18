@@ -1,107 +1,103 @@
-# TermsMet minimal runtime
+# TermsMet
 
-TermsMet is a local MCP stdio service for a versioned order extraction agreement, deterministic delivery checks, repair and conditional delivery. Funding, release and refunds are simulated; this is not a payment service. Identities are local demo identities, not production authentication.
+**Shared acceptance for agent transactions.** TermsMet is an MCP service that
+lets buyer and provider agents agree on versioned terms, submit structured data,
+receive deterministic checks and repair feedback, and retrieve the delivery
+after conditional release.
 
-Read [AGENT_GUIDE.md](AGENT_GUIDE.md) for the complete connected-agent interface,
-tool arguments/results, permissions, validation, deadlines, and limitations.
+The current template converts order CSV into checked JSON records. Both agents
+use the same agreement and persistent transaction state:
 
-## Setup
+**Agree → Simulate funding → Submit → Check and repair → Review → Release → Retrieve**
+
+Funding, release, and refunds are **simulated**. This runtime does not move money.
+
+## Quick start
+
+Use Python 3.11; the dependency file pins `mcp==2.3.0`.
 
 ```sh
 python3.11 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python examples/connect.py --db "$PWD/runtime/connection-check/live.sqlite"
 ```
 
-Launch a process per identity with a shared absolute SQLite path. The server reserves stdout for MCP.
+The [connection example](examples/connect.py) starts buyer and provider MCP
+processes, initializes both sessions, lists their tools, and calls
+`list_templates`. It checks connectivity; it does not run an agent transaction.
+
+## Connect an agent
+
+Read [AGENT_GUIDE.md](AGENT_GUIDE.md) for tool arguments, responses, permissions,
+source and delivery formats, rounding, versions, deadlines, and examples.
+
+Configure your MCP client to launch the server from this repository's root:
 
 ```sh
-TERMSMET_IDENTITY=buyer TERMSMET_DB_PATH=/absolute/path/to/termsmet.sqlite .venv/bin/python -m server.mcp_server
+TERMSMET_IDENTITY=buyer \
+TERMSMET_DB_PATH=/absolute/path/to/termsmet.sqlite \
+.venv/bin/python -m server.mcp_server
 ```
 
-Use `provider` as the other identity. A client should use the official MCP SDK over stdio. The service offers 11 tools: list_templates, propose_agreement, counter_agreement, accept_agreement, list_jobs, get_job, fund_job, submit_delivery, get_result, challenge_result and retrieve_delivery. No tool accepts an identity argument.
+Launch a separate process with `TERMSMET_IDENTITY=provider` for the other agent.
+Both processes must use the same absolute database path. Identity comes from
+server configuration; no tool accepts a role argument. Stdout is reserved for MCP.
 
-An executable [connection example](examples/connect.py) initializes both roles
-with an explicit runtime directory/interpreter and a shared absolute database:
+| Setting | Value |
+| --- | --- |
+| `TERMSMET_IDENTITY` | Required: `buyer` or `provider` |
+| `TERMSMET_DB_PATH` | Required: absolute path to the shared SQLite file |
+| `TERMSMET_REVIEW_SECONDS` | Default: `10`; the connection example and HW9 launcher explicitly use `2` |
+| `TERMSMET_FIRST_SUBMIT_MIN` | Default: `5` minutes after funding |
+
+The service exposes eleven tools: `list_templates`, `propose_agreement`,
+`counter_agreement`, `accept_agreement`, `list_jobs`, `get_job`, `fund_job`,
+`submit_delivery`, `get_result`, `challenge_result`, and `retrieve_delivery`.
+
+**PASS is not release.** Review must close and all release conditions must hold.
+Permitted tool calls advance due jobs; there is no background settlement worker.
+
+## Verification and agent testing
 
 ```sh
-.venv/bin/python examples/connect.py --db "$PWD/runtime/hw9/connection-example/live.sqlite"
 .venv/bin/python -m unittest discover -s tests -v
+.venv/bin/python evidence/hw9/verify.py
 ```
 
-The example explicitly supplies two-second review and five-minute first submission
-settings for HW9. The server default review remains **10 seconds**, and its first
-submission default remains five minutes (`TERMSMET_FIRST_SUBMIT_MIN`). Every
-permitted call advances due jobs; there is no background settlement worker.
+The offline evidence verifier checks file hashes, recorded MCP exchanges,
+diagnostics, and exported state counts. It does not inspect unpublished databases
+or run a new experiment.
 
-## HW9 checkpoint status
+For restricted Claude sessions, setup preflight, task inputs, execution commands,
+and evidence formats, use [HW9_HANDOFF.md](HW9_HANDOFF.md). Model access is needed
+for those sessions; the service, SDK connection example, and offline verifier do
+not require model credentials. Keep credentials and raw runs out of Git.
 
-Y1 provides the guide, connection example, and `current_submission_version` in
-`get_job` (0 before submission). Y2 adds the configurable restricted Claude
-launcher, pass-through MCP observer, bounded cleanup/backup and SDK/Claude
-preflight. See [the interim handoff](HW9_HANDOFF.md) for commands, task placeholders,
-the frozen evidence schema and failure behavior.
+## Documentation and evidence
 
-```sh
-.venv/bin/python -m coldstart.preflight \
-  --out runtime/hw9/preflight-01 --model claude-haiku-5-5 --effort medium
-```
+| Document | Purpose |
+| --- | --- |
+| [Agent guide](AGENT_GUIDE.md) | Interface contract for connected agents |
+| [HW9 handoff](HW9_HANDOFF.md) | Reproducible setup and remaining usability-test steps |
+| [HW9 results](HW9_YOU_RESULTS.md) | Recorded setup checks, boundary comparison, and limitations |
+| [Reviewed evidence](evidence/hw9/README.md) | Preserved setup and boundary evidence with offline verification |
+| [Source provenance](SOURCE_PROVENANCE.json) | Original service revision and subsequent runtime changes |
 
-Supply authorized model access through `ANTHROPIC_API_KEY` in the invoking
-environment. Never put its value in a command or committed file. The default
-endpoint is Parley; an environment-provided `ANTHROPIC_BASE_URL` can override it.
-Missing credentials record a blocked preflight, while the SDK checks still run.
-Y2 is complete: local `preflight-y2-04` passed at clean runtime commit
-`4b91a623c5d6f0443d5df8a302da032aec5595ea`, using Claude Code 2.1.317,
-`claude-haiku-5-5`, medium effort, and one actual matched `list_templates`
-request/response. Raw evidence is preserved locally under `runtime/hw9/`;
-reviewed publication is reserved for Y5. Fake CLI tests do not satisfy this gate.
+The HW9 setup and scripted unsupported-input checks are complete locally. The
+boundary improvement adds machine-readable missing/received-column diagnostics;
+it does not establish improved agent success. The main HW9 cold-start test remains
+the next step in the handoff. See the owner's handoff message for publication
+verification and confirm accepted collaborator access before editing.
+`hw9-docs-v0` and `hw9-v1` preserve the baseline and technical handoff revisions.
 
-Y3 froze the [scripted boundary criteria](coldstart/boundary_criteria.md), B1 input,
-and official-SDK probe at local `hw9-docs-v0`, commit
-`c1f536295bd0184a7e1a0684fc388d59d9f245b9`. The single formal baseline run is
-preserved in `runtime/hw9/b1-v0`: execution completed, `INVALID_TERMS` rejected the
-input, all seven business tables were empty, and the response was generic.
-Do not rerun or overwrite that attempt or move the baseline tag.
+## Current limits
 
-Y4 adds optional `error.details.missing_columns` and `received_columns` for valid
-headers that omit required names. Accepted inputs, other validation errors,
-checker version, and settlement behavior are unchanged. The unchanged probe is
-run from the tested clean Y4 commit into a fresh directory:
+- One task template: `order_extraction_v1`.
+- Simulated settlement and local demo identities; no production authentication
+  between independent organizations.
+- Mechanical challenges only; no subjective arbitration or marketplace discovery.
+- Local stdio processes and SQLite; no hosted service or background settlement.
+- The restricted agent launcher requires macOS or Linux.
 
-```sh
-.venv/bin/python -m coldstart.boundary_probe \
-  --source-csv coldstart/data/B1.csv --out runtime/hw9/b1-v1
-```
-
-The probe records **execution**, **correct rejection**, **verified zero business
-state changes**, and **diagnostic richness** separately. The preserved generic
-`INVALID_TERMS` is a baseline observation, not an execution failure. The probe makes
-one actual buyer proposal, then checks a read-only snapshot; no Claude session
-or credentials are used. Compare v0/v1 source, client settings, rejection and
-state checks independently from diagnostic richness. Richer feedback alone does
-not establish improved agent success.
-
-The reviewed boundary/setup subset is in [evidence/hw9](evidence/hw9/README.md):
-
-```sh
-python3.11 evidence/hw9/verify.py
-```
-
-This offline verifier checks hashes, matched exchanges, diagnostics and recorded
-state exports; it does not open an unpublished database, run an experiment or
-score the main task. See [You's results](HW9_YOU_RESULTS.md) and the
-[self-contained S1–S5 handoff](HW9_HANDOFF.md). Raw originals remain local.
-Y5 independent local reconstruction passed: fresh installation, **50 tests**,
-offline verification and one actual restricted preflight. Runtime code remains
-unchanged from the tested candidate. Current status: **Technical handoff ready;
-collaborator access pending.** Owner-approved publication, anonymous public-clone
-offline verification and accepted runtime-repository write access for Sheila
-remain required; technical preparation alone is not full Y5 completion.
-Main task files/data belong to Sheila's S1 and are intentionally absent. No HW9
-main cold-start result is claimed. No historical benchmark behavior has changed.
-
-The service supports one template and minimal mechanical challenges, not
-subjective arbitration or marketplace matching. See
-[SOURCE_PROVENANCE.json](SOURCE_PROVENANCE.json) for historical copied-file
-hashes and the HW9 derivative change description. Raw runs, environments,
-credentials, logs, and databases are ignored and must stay out of public commits.
+This repository distributes the standalone service and its current integration
+tools. Historical demos and benchmarks remain in their original repositories.

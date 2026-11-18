@@ -1,7 +1,8 @@
 # HW9 technical handoff — You Wu to Sheila Hsu
 
-**Publication and collaborator access must be confirmed before transfer.**
-Current status: **Technical handoff ready; collaborator access pending.**
+**Confirm the published revision and accepted collaborator access before editing.**
+The owner's latest handoff message records publication verification. Collaborator
+access was unverified when this document was prepared; confirm it separately.
 Y1–Y4 are implemented and verified; the results and reviewed evidence are in
 `HW9_YOU_RESULTS.md` and `evidence/hw9/`. Deterministic checks exercise actual MCP
 processes and synthetic CLI clients.
@@ -42,11 +43,20 @@ python3.11 -m venv .venv
   --out runtime/hw9/preflight-01 --model claude-haiku-5-5 --effort medium
 ```
 
-Before editing, require the two printed commits to equal the full handoff hash
-in the owner's message. A mismatch means you are not at the agreed handoff;
-do not reset unrelated work. `hw9-docs-v0` remains the historical baseline and
-`hw9-v1` the immutable technical handoff. Do not move either tag. You owns `hw9`
-until the handoff message; Sheila owns it afterward.
+Before editing, require `HEAD` to equal the branch hash in the owner's message.
+The immutable `hw9-v1` target remains
+`60a8f29c5a3d90f14e57e6afd43bbc25359ee8a5`; the branch includes a later
+documentation-only cleanup. Verify that runtime, tests and evidence are unchanged:
+
+```sh
+git merge-base --is-ancestor hw9-v1 HEAD
+git diff --exit-code hw9-v1 HEAD -- . ':!README.md' ':!HW9_HANDOFF.md'
+```
+
+A mismatch means you are not at the agreed handoff; do not reset unrelated work.
+`hw9-docs-v0` remains the historical baseline. Do not move either tag. You owns
+`hw9` until the handoff message; Sheila owns it afterward. These revision checks
+apply to the initial checkout, before Sheila adds her own work.
 
 Versioned documentation after publication:
 [guide](https://github.com/wywyou56/termsmet-runtime/blob/hw9-v1/AGENT_GUIDE.md),
