@@ -23,6 +23,7 @@ htmlcov/
 runtime/
 *.sqlite
 *.sqlite-*
+*.sqlite.partial
 *.sqlite3
 *.sqlite3-*
 *.db

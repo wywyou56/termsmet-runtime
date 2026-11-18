@@ -36,11 +36,26 @@ permitted call advances due jobs; there is no background settlement worker.
 ## HW9 checkpoint status
 
 Y1 provides the guide, connection example, and `current_submission_version` in
-`get_job` (0 before submission). A focused actual-MCP check covers version
-discovery before and after a failed submission and passing repair. The reusable
-restricted launcher/preflight, boundary probe and diagnostic improvement, and
-versioned technical handoff are still pending Y2–Y5. No HW9 main cold-start result
-is claimed. No historical benchmark behavior has been changed.
+`get_job` (0 before submission). Y2 adds the configurable restricted Claude
+launcher, pass-through MCP observer, bounded cleanup/backup and SDK/Claude
+preflight. See [the interim handoff](HW9_HANDOFF.md) for commands, task placeholders,
+the frozen evidence schema and failure behavior.
+
+```sh
+.venv/bin/python -m coldstart.preflight \
+  --out runtime/hw9/preflight-01 --model claude-haiku-5-5 --effort medium
+```
+
+Supply authorized model access through `ANTHROPIC_API_KEY` in the invoking
+environment. Never put its value in a command or committed file. The default
+endpoint is Parley; an environment-provided `ANTHROPIC_BASE_URL` can override it.
+Missing credentials record a blocked preflight, while the SDK checks still run.
+Y2 remains partially complete until a real restricted Claude session successfully
+makes and receives `list_templates`; fake CLI tests do not satisfy this gate.
+
+The boundary probe/improvement and final versioned handoff remain pending Y3–Y5.
+Main task files/data belong to Sheila's S1 and are intentionally absent. No HW9
+main cold-start result is claimed. No historical benchmark behavior has changed.
 
 The service supports one template and minimal mechanical challenges, not
 subjective arbitration or marketplace matching. See

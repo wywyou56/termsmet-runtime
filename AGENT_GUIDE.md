@@ -313,7 +313,9 @@ Keep any future model-client credentials in the invoking environment, outside
 prompts/configuration examples and server environments. Do not expose shell,
 filesystem, the SQLite file, private submissions, or expected answers through
 agent tools. The connection example does not enforce a model client's isolation;
-the HW9 restricted launcher/preflight is a later checkpoint.
+the HW9 restricted launcher/preflight is documented in `HW9_HANDOFF.md`. Its
+SDK stage is setup validation; the live restricted Claude preflight must pass
+separately before the later formal experiment.
 
 ## Current scope
 
@@ -321,6 +323,7 @@ This baseline adds submission-version discovery and interface documentation.
 It does not change accepted inputs, delivery typing, checking, agreement or
 settlement rules, server defaults, or historical HW7/HW8 revisions. It does not
 provide a hosted endpoint, real payments, production authentication, background
-settlement, extra templates, or agent reasoning. The HW9 launcher, formal
-boundary comparison, technical handoff tags, and main cold-start evidence are
-not completed by Y1.
+settlement, extra templates, or agent reasoning. Y2 adds execution tools and
+preflight separately from the service interface. Live restricted-client
+verification, the formal boundary comparison, final technical handoff tags, and
+main cold-start evidence are not claimed by this baseline guide.
