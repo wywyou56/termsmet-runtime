@@ -50,10 +50,29 @@ Supply authorized model access through `ANTHROPIC_API_KEY` in the invoking
 environment. Never put its value in a command or committed file. The default
 endpoint is Parley; an environment-provided `ANTHROPIC_BASE_URL` can override it.
 Missing credentials record a blocked preflight, while the SDK checks still run.
-Y2 remains partially complete until a real restricted Claude session successfully
-makes and receives `list_templates`; fake CLI tests do not satisfy this gate.
+Y2 is complete: local `preflight-y2-04` passed at clean runtime commit
+`4b91a623c5d6f0443d5df8a302da032aec5595ea`, using Claude Code 2.1.317,
+`claude-haiku-5-5`, medium effort, and one actual matched `list_templates`
+request/response. Raw evidence is preserved locally under `runtime/hw9/`;
+reviewed publication is reserved for Y5. Fake CLI tests do not satisfy this gate.
 
-The boundary probe/improvement and final versioned handoff remain pending Y3–Y5.
+Y3 adds the [scripted boundary criteria](coldstart/boundary_criteria.md), B1 input,
+and an official-SDK probe. Commit/tag the clean baseline as `hw9-docs-v0` before
+the single formal baseline run:
+
+```sh
+.venv/bin/python -m coldstart.boundary_probe \
+  --source-csv coldstart/data/B1.csv --out runtime/hw9/b1-v0
+```
+
+The probe records **execution**, **correct rejection**, **verified zero business
+state changes**, and **diagnostic richness** separately. A generic `INVALID_TERMS`
+message is the expected baseline observation, not an execution failure. It makes
+one actual buyer proposal, then checks a read-only snapshot; no Claude session
+or credentials are used. Do not change the diagnostic until the actual baseline
+evidence has been preserved. The same command with `b1-v1` is reserved for Y4.
+
+The diagnostic improvement and final versioned handoff remain pending Y4–Y5.
 Main task files/data belong to Sheila's S1 and are intentionally absent. No HW9
 main cold-start result is claimed. No historical benchmark behavior has changed.
 

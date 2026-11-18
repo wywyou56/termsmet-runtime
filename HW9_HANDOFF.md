@@ -1,10 +1,13 @@
-# HW9 technical handoff — interim Y2 interface contract
+# HW9 technical handoff — interim baseline and interface contract
 
 **This is not the final Y5 handoff.** Y1 and the Y2 execution tools are implemented;
 deterministic checks exercise actual MCP processes and synthetic CLI clients.
-The real restricted Claude preflight remains pending until
-authorized model access is available. Y3 boundary evidence, Y4 diagnostic
-improvement, final reproduction/publication/access checks and tags are pending.
+The real restricted Claude preflight passed at clean runtime revision
+`4b91a623c5d6f0443d5df8a302da032aec5595ea` (local `preflight-y2-04`, one matched
+actual `list_templates` call, exit 0). Y3 provides the baseline boundary probe
+and predefined criteria; its formal evidence must be generated from the tagged
+clean revision. Y4 diagnostic improvement and Y5 final reproduction/publication/
+access checks and final tag remain pending.
 No main cold-start experiment has been run. The final handoff will include the
 full Y1–Y5 results and Sheila's self-contained S1–S5 instructions.
 
@@ -52,6 +55,53 @@ Use a new numbered output path after any failed/blocked attempt.
 
 The unit tests use clearly labeled synthetic CLI processes. Their outputs are
 test fixtures, never live Claude or cold-start evidence.
+
+## Scripted B1 boundary baseline
+
+Read `coldstart/boundary_criteria.md`, which is separate from Sheila's S1 main
+criteria. The checked-in B1 source has unsupported headers. The fair agent guide
+continues to document the actual accepted source and the current generic error.
+Tests of future structured diagnostic assessment use response fixtures only;
+the server is not temporarily changed to manufacture before/after evidence.
+
+After committing the probe, criteria, data and guide and creating the local
+`hw9-docs-v0` tag, run once from that exact clean revision:
+
+```sh
+.venv/bin/python -m coldstart.boundary_probe \
+  --source-csv coldstart/data/B1.csv --out runtime/hw9/b1-v0
+```
+
+This is a fixed actual-MCP script, not a fresh LLM agent. It needs no model key.
+It initializes a buyer identity with all eleven tools, then makes exactly one
+`propose_agreement` request containing the original decoded CSV. No subsequent
+business calls are made. A supervised worker bounds SDK initialization and
+teardown. Defaults are 15 seconds per startup/request and 45 seconds for the
+worker, plus bounded cleanup/backup. Both baseline and rerun use two-second
+review and five-minute first submission settings.
+
+The output directory must be absent or empty. `probe.json` records four separate
+outcomes: `execution_status`, `unsupported_input_correctly_rejected`,
+`zero_state_changes_verified`, and `diagnostic_richness_observed`. Exit 0 requires
+completed execution, rejection with `INVALID_TERMS`, and verified zero business
+rows/events. It does not require rich diagnostics. Unknown state is JSON null,
+not true. Missing snapshots, failed cleanup, unmatched requests/responses, and
+SDK failures prevent completed execution. The original error remains unmodified.
+
+`source.csv` preserves input bytes. `worker.json` records the SDK request,
+response and inventory. `mcp-buyer.jsonl` and `buyer-control.jsonl` use the existing
+protocol/control formats; worker/server diagnostic logs are retained. There is
+no LLM stdout file. Runtime/tag commits, clean/dirty state, source/guide/criteria/
+probe hashes, historical provenance, configuration and timestamps are recorded.
+The final consistent `termsmet.sqlite` is inspected read-only to count all seven
+business tables and settlement event types. No observer calls advance the service.
+
+If the baseline already has the planned complete structured missing/received
+column diagnostic, stop and report that fact; never fabricate a generic v0.
+Preserve the formal result and stop before Y4, including on execution failure.
+Never move an existing tag or overwrite a failed attempt. The later Y4 rerun
+uses the same command/input/configuration with `runtime/hw9/b1-v1` and a fresh
+database. Richer boundary diagnostics alone do not establish better agent success.
 
 ## Launcher invocation and task contract
 
@@ -175,10 +225,9 @@ evidence and live state. Preserve the whole failed output directory for diagnosi
 
 ## Work still required
 
-Y2 remains partially complete until the actual restricted Claude preflight
-passes with environment-provided access. Do not infer that result from fake CLI
-tests or the SDK stage. Y3 must freeze and observe the original unsupported-input
-diagnostic before Y4 changes it. Y5 must provide the final results/handoff,
+Y2 passed its actual restricted Claude preflight; that is setup verification,
+not the main cold-start result. Y3 must freeze and observe the original
+unsupported-input diagnostic before Y4 changes it. Y5 must provide the final results/handoff,
 independent-checkout verification, reviewed publication, tags, and confirmed
-Sheila access to this runtime repository. No tags or publication are authorized
-at this checkpoint.
+Sheila access to this runtime repository. Y3 authorizes the local baseline tag
+only. Publication, the final tag and the main cold-start run remain outside Y3.

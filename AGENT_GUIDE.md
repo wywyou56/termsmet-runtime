@@ -314,8 +314,9 @@ prompts/configuration examples and server environments. Do not expose shell,
 filesystem, the SQLite file, private submissions, or expected answers through
 agent tools. The connection example does not enforce a model client's isolation;
 the HW9 restricted launcher/preflight is documented in `HW9_HANDOFF.md`. Its
-SDK stage is setup validation; the live restricted Claude preflight must pass
-separately before the later formal experiment.
+SDK stage is setup validation; the separate live restricted Claude preflight
+passed at runtime revision `4b91a623c5d6f0443d5df8a302da032aec5595ea` with one
+actual `list_templates` exchange. This is setup evidence, not the main experiment.
 
 ## Current scope
 
@@ -324,6 +325,7 @@ It does not change accepted inputs, delivery typing, checking, agreement or
 settlement rules, server defaults, or historical HW7/HW8 revisions. It does not
 provide a hosted endpoint, real payments, production authentication, background
 settlement, extra templates, or agent reasoning. Y2 adds execution tools and
-preflight separately from the service interface. Live restricted-client
-verification, the formal boundary comparison, final technical handoff tags, and
-main cold-start evidence are not claimed by this baseline guide.
+preflight separately from the service interface. Y3 supplies a scripted
+unsupported-input probe and predefined boundary criteria. The diagnostic
+improvement/comparison, final technical handoff and main cold-start evidence
+remain later work.

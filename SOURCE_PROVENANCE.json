@@ -15,6 +15,6 @@
     "changed_copied_files": {
       "server/service.py": "Y1: expose the existing current_submission_version database value in get_job; no schema or settlement changes."
     },
-    "additional_work": "Y1 interface guide, official-SDK connection example, focused baseline tests, ignore rules and README updates. Y2 adds independent coldstart execution/proxy/preflight modules, deterministic tests and an interim evidence-interface handoff; no further copied server files change. Live restricted-Claude preflight, boundary improvement and final handoff remain pending."
+    "additional_work": "Y1 interface guide, official-SDK connection example, focused baseline tests, ignore rules and README updates. Y2 adds independent coldstart execution/proxy/preflight modules, deterministic tests and an interim evidence-interface handoff; the real restricted-Claude preflight passed at 4b91a623c5d6f0443d5df8a302da032aec5595ea. Y3 adds the scripted boundary probe, B1 input, predefined criteria and response-fixture assessment tests. No further copied server files change; boundary diagnostic improvement and final handoff remain pending."
   }
 }
