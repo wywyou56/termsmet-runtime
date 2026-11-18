@@ -1,0 +1,179 @@
+{
+  "buyer_report": {
+    "parse_error": null,
+    "parsed": {
+      "approval_orders": [
+        {
+          "order_id": "K303",
+          "total_amount_usd": "149.99"
+        },
+        {
+          "order_id": "K304",
+          "total_amount_usd": "100.80"
+        },
+        {
+          "order_id": "K307",
+          "total_amount_usd": "125.00"
+        }
+      ],
+      "job_id": "job-23a788647641450d9f1c90fb63e95e8e",
+      "order_count": 8,
+      "total_amount_usd": "610.76",
+      "total_quantity": 48
+    },
+    "received_at": 1795009861.825601,
+    "result_events": 1
+  },
+  "checked_at": 1795009867.392433,
+  "checker": "coldstart/check_run.py",
+  "checks": {
+    "C1": {
+      "reason": "buyer and provider both accepted agreement v1",
+      "status": "passed",
+      "version": 1
+    },
+    "C2": {
+      "funded_at": "2026-11-18T13:50:01.599499Z",
+      "reason": "one simulated funding event, not after any submission",
+      "status": "passed"
+    },
+    "C3": {
+      "reason": "provider submission 1 has a persisted server PASS",
+      "status": "passed",
+      "submission_version": 1
+    },
+    "C4": {
+      "reason": "exactly one simulated release after the review deadline, no refund",
+      "released_at": "2026-11-18T13:50:19.097517Z",
+      "review_deadline": "2026-11-18T13:50:12.440136Z",
+      "status": "passed"
+    },
+    "C5": {
+      "reason": "retrieved delivery equals the independent expected delivery",
+      "retrieved_at": 1795009831.4795961,
+      "status": "passed"
+    },
+    "C6": {
+      "reason": "buyer report matches the independent expected report and follows retrieval",
+      "report_received_at": 1795009861.825601,
+      "status": "passed"
+    },
+    "C7": {
+      "client_span_seconds": 91.75812888145447,
+      "manual_help": "none reported",
+      "reason": "manual help disclosed; call and time limits respected",
+      "status": "passed"
+    }
+  },
+  "evaluated_job": {
+    "agreement_version": 1,
+    "current_submission_version": 1,
+    "job_id": "job-23a788647641450d9f1c90fb63e95e8e",
+    "selected": "named by buyer report",
+    "status": "RELEASED"
+  },
+  "expected_report_with_observed_job": {
+    "approval_orders": [
+      {
+        "order_id": "K303",
+        "total_amount_usd": "149.99"
+      },
+      {
+        "order_id": "K304",
+        "total_amount_usd": "100.80"
+      },
+      {
+        "order_id": "K307",
+        "total_amount_usd": "125.00"
+      }
+    ],
+    "job_id": "job-23a788647641450d9f1c90fb63e95e8e",
+    "order_count": 8,
+    "total_amount_usd": "610.76",
+    "total_quantity": 48
+  },
+  "friction": {
+    "agreement_versions": 1,
+    "challenges": 0,
+    "jobs_created": 1,
+    "repairs": 0,
+    "roles": {
+      "buyer": {
+        "blocked_calls": 0,
+        "business_error_counts": {},
+        "business_errors": [],
+        "elapsed_seconds": 91.43023490905762,
+        "exit_code": 0,
+        "final_result_text": "{\"job_id\":\"job-23a788647641450d9f1c90fb63e95e8e\",\"order_count\":8,\"total_quantity\":48,\"total_amount_usd\":\"610.76\",\"approval_orders\":[{\"order_id\":\"K303\",\"total_amount_usd\":\"149.99\"},{\"order_id\":\"K304\",\"total_amount_usd\":\"100.80\"},{\"order_id\":\"K307\",\"total_amount_usd\":\"125.00\"}]}",
+        "num_turns": 16,
+        "protocol_errors": 0,
+        "result_events": 1,
+        "tool_attempts": 15,
+        "tool_calls_logged": 15,
+        "tool_counts": {
+          "accept_agreement": 1,
+          "fund_job": 1,
+          "get_job": 5,
+          "get_result": 3,
+          "list_jobs": 2,
+          "list_templates": 1,
+          "propose_agreement": 1,
+          "retrieve_delivery": 1
+        },
+        "total_cost_usd": 0.006533904999999999,
+        "unanswered_calls": 0
+      },
+      "provider": {
+        "blocked_calls": 0,
+        "business_error_counts": {},
+        "business_errors": [],
+        "elapsed_seconds": 54.366655111312866,
+        "exit_code": 0,
+        "final_result_text": "The job is released. The `get_result` receipt shows status `RELEASED` with a `SIMULATED_RELEASE` event at 13:50:19Z.\n\n**Final summary**\n\n- **Job ID:** `job-23a788647641450d9f1c90fb63e95e8e`\n- **Final observed status:** `RELEASED` (simulated release, settlement status `RELEASED`)\n- **Agreement:** version 1, accepted by both buyer and provider, repair window 5 minutes, max repairs 1.\n- **Delivery (submission 1):** `PASS`, with no errors. Checker version `order_extraction_v1.0`.\n\nI did not retrieve the delivery, since that is the buyer's action. I did not need a repair.",
+        "num_turns": 12,
+        "protocol_errors": 0,
+        "result_events": 1,
+        "tool_attempts": 11,
+        "tool_calls_logged": 11,
+        "tool_counts": {
+          "accept_agreement": 1,
+          "get_job": 2,
+          "get_result": 1,
+          "list_jobs": 5,
+          "list_templates": 1,
+          "submit_delivery": 1
+        },
+        "total_cost_usd": 0.0035756900000000003,
+        "unanswered_calls": 0
+      }
+    },
+    "submissions": [
+      {
+        "errors": [],
+        "submission_version": 1,
+        "verdict": "PASS"
+      }
+    ],
+    "unknown_verdicts": 0
+  },
+  "launcher": {
+    "claude_version": "2.1.317 (Claude Code)",
+    "effort": "medium",
+    "elapsed_seconds": 91.78374441666529,
+    "execution_status": "completed",
+    "failures": [],
+    "first_submit_minutes": 5.0,
+    "kind": "launch",
+    "manual_help": "none reported",
+    "model": "claude-haiku-5-5",
+    "review_seconds": 2.0,
+    "runtime_commit": "2250e3a875111261a184f98adf886a0afa4a006a",
+    "tool_limit": 60,
+    "wall_seconds": 900.0,
+    "working_tree_dirty": false
+  },
+  "run": "main-01",
+  "schema_version": 1,
+  "service_calls_made": 0,
+  "useful_result": true
+}

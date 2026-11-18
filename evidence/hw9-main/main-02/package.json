@@ -1,0 +1,71 @@
+{
+  "files": {
+    "buyer-control.jsonl": "2b73d544a95bf4359aebcb95a30b4e59bcfdbebd28110a4bfde6d17a3b1cfbba",
+    "buyer.jsonl": "c79cf05e4706f922e6f91c385d14066c06786e1f452b8a35962f56e96485d1b3",
+    "check.json": "8ecb282e83fcd5543844f59335259b4086357d798fe70d15665c7289839a64a9",
+    "manifest.json": "7d9373b3f2d77dd1bbcfd7131c8bd509447b6a2487d3d0f950ad8b9ddae46348",
+    "mcp-buyer.jsonl": "82fe7bb7a9c2535f033384bf8f4e80fb5dbda034f4ca8b3e172d5c29bc6ecf34",
+    "mcp-provider.jsonl": "32af4a00eb7add05930324bcf7eb1f7e70341f57f0c02c9e304b1340584d9147",
+    "prompt-buyer.md": "54d79580099c68e8426626b01636ea7668bed867001964c629448ae8ee3e6bb6",
+    "prompt-provider.md": "47540567b211fb8bcffae5b70a57344f94889689927197f04b017e4c2c62e00d",
+    "provider-control.jsonl": "77086d322001d0cd5870283e291789ec2bc0584a6bd4c16735114559e9e06a8c",
+    "provider.jsonl": "bc6a0b0b1e50fd096d2d4549277e632349497815a09e16e660b3318420a06503",
+    "state.json": "60c4e529dc4d3b2e76868bf0338b98d3f4f23bc085a6741b3fdb2908f0a2441d"
+  },
+  "not_published": [
+    "termsmet.sqlite",
+    "client-*.stderr.log",
+    "server-*.stderr.log",
+    "mcp-buyer.json",
+    "mcp-provider.json",
+    ".work/"
+  ],
+  "note": "State is a recorded export plus snapshot hash, not independent inspection of an unpublished database. Business payloads, prompts, IDs and timestamps are unchanged.",
+  "origins": {
+    "buyer-control.jsonl": {
+      "original_sha256": "2b73d544a95bf4359aebcb95a30b4e59bcfdbebd28110a4bfde6d17a3b1cfbba",
+      "transformation": "none"
+    },
+    "buyer.jsonl": {
+      "original_sha256": "e9999727010b633eb099652f14a534710a3b35320d1f6b899346cc70ea950ef5",
+      "transformation": "machine paths -> <REPOSITORY>/<HOME>; client session IDs -> <SESSION>"
+    },
+    "check.json": {
+      "original_sha256": "8ecb282e83fcd5543844f59335259b4086357d798fe70d15665c7289839a64a9",
+      "transformation": "none"
+    },
+    "manifest.json": {
+      "original_sha256": "3b7813c9126d62d5127d420da73ca067f4669960ac6db9ad9b609f885b391ee3",
+      "transformation": "machine paths -> <REPOSITORY>/<HOME>; client session IDs -> <SESSION>"
+    },
+    "mcp-buyer.jsonl": {
+      "original_sha256": "82fe7bb7a9c2535f033384bf8f4e80fb5dbda034f4ca8b3e172d5c29bc6ecf34",
+      "transformation": "none"
+    },
+    "mcp-provider.jsonl": {
+      "original_sha256": "32af4a00eb7add05930324bcf7eb1f7e70341f57f0c02c9e304b1340584d9147",
+      "transformation": "none"
+    },
+    "prompt-buyer.md": {
+      "original_sha256": "54d79580099c68e8426626b01636ea7668bed867001964c629448ae8ee3e6bb6",
+      "transformation": "none"
+    },
+    "prompt-provider.md": {
+      "original_sha256": "47540567b211fb8bcffae5b70a57344f94889689927197f04b017e4c2c62e00d",
+      "transformation": "none"
+    },
+    "provider-control.jsonl": {
+      "original_sha256": "77086d322001d0cd5870283e291789ec2bc0584a6bd4c16735114559e9e06a8c",
+      "transformation": "none"
+    },
+    "provider.jsonl": {
+      "original_sha256": "229909d92e619d3819ceca4f6e616a4371ca3ca4e01ca4ccb652400ad89a8c27",
+      "transformation": "machine paths -> <REPOSITORY>/<HOME>; client session IDs -> <SESSION>"
+    },
+    "state.json": {
+      "transformation": "export of the seven business tables; the database is not published"
+    }
+  },
+  "run": "main-02",
+  "schema_version": 1
+}

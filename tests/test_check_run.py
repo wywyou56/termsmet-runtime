@@ -323,6 +323,35 @@ class CheckRunTests(unittest.TestCase):
         self.assertEqual(result["checks"]["C1"]["status"], "incomplete")
         self.assertFalse(result["useful_result"])
 
+    def test_recorded_state_export_reproduces_snapshot_result(self):
+        run = write_run(self.root, scenario())
+        from_snapshot = check_run.evaluate(run, EXPECTED_DELIVERY, EXPECTED_REPORT)
+        tables = check_run.export_tables(run / "termsmet.sqlite")
+        (run / "termsmet.sqlite").unlink()
+        (run / "state.json").write_text(json.dumps({"tables": tables}), encoding="utf-8")
+        from_export = check_run.evaluate(run, EXPECTED_DELIVERY, EXPECTED_REPORT)
+        self.assertEqual(self.statuses(from_export), self.statuses(from_snapshot))
+        self.assertIn("recorded state export", from_export["state_source"])
+        (run / "state.json").write_text(json.dumps({"tables": {"jobs": []}}), encoding="utf-8")
+        self.assertEqual(check_run.evaluate(run, EXPECTED_DELIVERY, EXPECTED_REPORT)["checks"]["C1"]["status"],
+                         "incomplete")
+
+    def test_package_and_verify_roundtrip(self):
+        from coldstart import package_main
+        run = write_run(self.root, scenario())
+        for role in ("buyer", "provider"):
+            (run / f"prompt-{role}.md").write_text("synthetic prompt\n", encoding="utf-8")
+        check_run.main(["--run", str(run), "--expected-delivery", str(DATA / "H9_expected_delivery.json"),
+                        "--expected-report", str(DATA / "H9_expected_report.json")])
+        package_root = self.root / "package"
+        package_main.package(run, package_root / run.name)
+        self.assertFalse((package_root / run.name / "termsmet.sqlite").exists())
+        self.assertEqual(package_main.verify(package_root), 0)
+        with open(package_root / run.name / "buyer.jsonl", "a", encoding="utf-8") as handle:
+            handle.write("\n")
+        with self.assertRaises(SystemExit):
+            package_main.verify(package_root)
+
     def test_checker_does_not_import_service(self):
         source = (Path(check_run.__file__)).read_text(encoding="utf-8")
         self.assertNotIn("from server", source)

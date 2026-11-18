@@ -1,0 +1,158 @@
+{
+  "buyer_report": {
+    "parse_error": "Expecting value: line 1 column 1 (char 0)",
+    "parsed": null,
+    "received_at": 1795009966.906024,
+    "result_events": 1
+  },
+  "checked_at": 1795009976.9167922,
+  "checker": "coldstart/check_run.py",
+  "checks": {
+    "C1": {
+      "reason": "buyer and provider both accepted agreement v1",
+      "status": "passed",
+      "version": 1
+    },
+    "C2": {
+      "funded_at": "2026-11-18T13:52:14.907550Z",
+      "reason": "one simulated funding event, not after any submission",
+      "status": "passed"
+    },
+    "C3": {
+      "reason": "provider submission 1 has a persisted server PASS",
+      "status": "passed",
+      "submission_version": 1
+    },
+    "C4": {
+      "reason": "exactly one simulated release after the review deadline, no refund",
+      "released_at": "2026-11-18T13:52:28.047832Z",
+      "review_deadline": "2026-11-18T13:52:26.097513Z",
+      "status": "passed"
+    },
+    "C5": {
+      "reason": "retrieved delivery equals the independent expected delivery",
+      "retrieved_at": 1795009958.273513,
+      "status": "passed"
+    },
+    "C6": {
+      "reason": "buyer final answer is not one JSON object: Expecting value: line 1 column 1 (char 0)",
+      "status": "failed"
+    },
+    "C7": {
+      "client_span_seconds": 61.829046964645386,
+      "manual_help": "none reported",
+      "reason": "manual help disclosed; call and time limits respected",
+      "status": "passed"
+    }
+  },
+  "evaluated_job": {
+    "agreement_version": 1,
+    "current_submission_version": 1,
+    "job_id": "job-1f6470d43470453080c2f696abbeed05",
+    "selected": "only job in snapshot",
+    "status": "RELEASED"
+  },
+  "expected_report_with_observed_job": {
+    "approval_orders": [
+      {
+        "order_id": "K303",
+        "total_amount_usd": "149.99"
+      },
+      {
+        "order_id": "K304",
+        "total_amount_usd": "100.80"
+      },
+      {
+        "order_id": "K307",
+        "total_amount_usd": "125.00"
+      }
+    ],
+    "job_id": "job-1f6470d43470453080c2f696abbeed05",
+    "order_count": 8,
+    "total_amount_usd": "610.76",
+    "total_quantity": 48
+  },
+  "friction": {
+    "agreement_versions": 1,
+    "challenges": 0,
+    "jobs_created": 1,
+    "repairs": 0,
+    "roles": {
+      "buyer": {
+        "blocked_calls": 0,
+        "business_error_counts": {},
+        "business_errors": [],
+        "elapsed_seconds": 61.3924081325531,
+        "exit_code": 0,
+        "final_result_text": "The delivery matches the source. I checked each row by hand: unit prices are rounded before multiplying (K302 2.675 \u2192 268, K305 0.995 \u2192 100, K308 3.333 \u2192 333), and the totals follow from those. Summing the eight totals gives 61076 cents, or $610.76.\n\n```json\n{\"job_id\":\"job-1f6470d43470453080c2f696abbeed05\",\"order_count\":8,\"total_quantity\":48,\"total_amount_usd\":\"610.76\",\"approval_orders\":[{\"order_id\":\"K303\",\"total_amount_usd\":\"149.99\"},{\"order_id\":\"K304\",\"total_amount_usd\":\"100.80\"},{\"order_id\":\"K307\",\"total_amount_usd\":\"125.00\"}]}\n```",
+        "num_turns": 11,
+        "protocol_errors": 0,
+        "result_events": 1,
+        "tool_attempts": 10,
+        "tool_calls_logged": 10,
+        "tool_counts": {
+          "accept_agreement": 1,
+          "fund_job": 1,
+          "get_job": 4,
+          "get_result": 1,
+          "list_jobs": 1,
+          "propose_agreement": 1,
+          "retrieve_delivery": 1
+        },
+        "total_cost_usd": 0.004692725000000001,
+        "unanswered_calls": 0
+      },
+      "provider": {
+        "blocked_calls": 0,
+        "business_error_counts": {},
+        "business_errors": [],
+        "elapsed_seconds": 49.52413296699524,
+        "exit_code": 0,
+        "final_result_text": "The job is released. Summary:\n\n- **Job ID:** `job-1f6470d43470453080c2f696abbeed05`\n- **Final status observed:** `RELEASED`, with a simulated release recorded (settlement status `RELEASED`, simulated).\n- **Agreement:** version 1, accepted by both buyer and provider, with the default 5-minute repair window and 1 repair allowed.\n- **Delivery (submission 1):** `PASS`, with no errors, checker `order_extraction_v1.0`. I submitted all 8 orders with unit prices rounded half-up before multiplying:\n\n| Order | Qty | Unit cents | Total cents |\n| --- | --- | --- | --- |\n| K301 | 4 | 2500 | 10000 |\n| K302 | 3 | 268 | 804 |\n| K303 | 1 | 14999 | 14999 |\n| K304 | 12 | 840 | 10080 |\n| K305 | 7 | 100 | 700 |\n| K306 | 5 | 1999 | 9995 |\n| K307 | 10 | 1250 | 12500 |\n| K308 | 6 | 333 | 1998 |\n\nI did not retrieve the delivery, since that is the buyer's action.",
+        "num_turns": 11,
+        "protocol_errors": 0,
+        "result_events": 1,
+        "tool_attempts": 10,
+        "tool_calls_logged": 10,
+        "tool_counts": {
+          "accept_agreement": 1,
+          "get_job": 3,
+          "get_result": 1,
+          "list_jobs": 3,
+          "list_templates": 1,
+          "submit_delivery": 1
+        },
+        "total_cost_usd": 0.00358906,
+        "unanswered_calls": 0
+      }
+    },
+    "submissions": [
+      {
+        "errors": [],
+        "submission_version": 1,
+        "verdict": "PASS"
+      }
+    ],
+    "unknown_verdicts": 0
+  },
+  "launcher": {
+    "claude_version": "2.1.317 (Claude Code)",
+    "effort": "medium",
+    "elapsed_seconds": 61.84194754110649,
+    "execution_status": "completed",
+    "failures": [],
+    "first_submit_minutes": 5.0,
+    "kind": "launch",
+    "manual_help": "none reported",
+    "model": "claude-haiku-5-5",
+    "review_seconds": 2.0,
+    "runtime_commit": "2250e3a875111261a184f98adf886a0afa4a006a",
+    "tool_limit": 60,
+    "wall_seconds": 900.0,
+    "working_tree_dirty": false
+  },
+  "run": "main-02",
+  "schema_version": 1,
+  "service_calls_made": 0,
+  "useful_result": false
+}

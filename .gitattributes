@@ -1,0 +1,2 @@
+# Published run evidence is preserved byte-for-byte (exact rendered prompts and client output).
+evidence/hw9-main/** -whitespace

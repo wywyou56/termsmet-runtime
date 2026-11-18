@@ -1,0 +1,24 @@
+{"timestamp": 1795009906.2675881, "event": "proxy_started", "pid": 72491, "pgid": 72491}
+{"timestamp": 1795009906.271265, "event": "server_started", "pid": 72496, "pgid": 72491}
+{"timestamp": 1795009906.899022, "event": "server_inventory_verified", "tools": ["list_templates", "propose_agreement", "list_jobs", "get_job", "counter_agreement", "accept_agreement", "fund_job", "submit_delivery", "get_result", "challenge_result", "retrieve_delivery"]}
+{"timestamp": 1795009914.388335, "event": "tool_attempt", "count": 1, "request_id": 4}
+{"timestamp": 1795009914.388476, "event": "tool_forwarded", "count": 1, "request_id": 4}
+{"timestamp": 1795009922.533719, "event": "tool_attempt", "count": 2, "request_id": 5}
+{"timestamp": 1795009922.533799, "event": "tool_forwarded", "count": 2, "request_id": 5}
+{"timestamp": 1795009922.5521421, "event": "tool_attempt", "count": 3, "request_id": 6}
+{"timestamp": 1795009922.552206, "event": "tool_forwarded", "count": 3, "request_id": 6}
+{"timestamp": 1795009927.978144, "event": "tool_attempt", "count": 4, "request_id": 7}
+{"timestamp": 1795009927.978267, "event": "tool_forwarded", "count": 4, "request_id": 7}
+{"timestamp": 1795009927.995422, "event": "tool_attempt", "count": 5, "request_id": 8}
+{"timestamp": 1795009927.995487, "event": "tool_forwarded", "count": 5, "request_id": 8}
+{"timestamp": 1795009934.9007082, "event": "tool_attempt", "count": 6, "request_id": 9}
+{"timestamp": 1795009934.900784, "event": "tool_forwarded", "count": 6, "request_id": 9}
+{"timestamp": 1795009942.646208, "event": "tool_attempt", "count": 7, "request_id": 10}
+{"timestamp": 1795009942.646367, "event": "tool_forwarded", "count": 7, "request_id": 10}
+{"timestamp": 1795009948.037882, "event": "tool_attempt", "count": 8, "request_id": 11}
+{"timestamp": 1795009948.038006, "event": "tool_forwarded", "count": 8, "request_id": 11}
+{"timestamp": 1795009953.772513, "event": "tool_attempt", "count": 9, "request_id": 12}
+{"timestamp": 1795009953.7725902, "event": "tool_forwarded", "count": 9, "request_id": 12}
+{"timestamp": 1795009958.270396, "event": "tool_attempt", "count": 10, "request_id": 13}
+{"timestamp": 1795009958.270566, "event": "tool_forwarded", "count": 10, "request_id": 13}
+{"timestamp": 1795009966.925471, "event": "proxy_stopped", "failed": false}

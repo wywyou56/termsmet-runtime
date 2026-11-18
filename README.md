@@ -62,6 +62,7 @@ Permitted tool calls advance due jobs; there is no background settlement worker.
 ```sh
 .venv/bin/python -m unittest discover -s tests -v
 .venv/bin/python evidence/hw9/verify.py
+.venv/bin/python -m coldstart.package_main --verify evidence/hw9-main
 ```
 
 The offline evidence verifier checks file hashes, recorded MCP exchanges,
@@ -81,14 +82,17 @@ not require model credentials. Keep credentials and raw runs out of Git.
 | [HW9 handoff](HW9_HANDOFF.md) | Reproducible setup and remaining usability-test steps |
 | [HW9 results](HW9_YOU_RESULTS.md) | Recorded setup checks, boundary comparison, and limitations |
 | [Reviewed evidence](evidence/hw9/README.md) | Preserved setup and boundary evidence with offline verification |
+| [Main cold-start evidence](evidence/hw9-main/README.md) | Fresh-agent buyer/provider runs, predefined checks, results and reproduction |
 | [Source provenance](SOURCE_PROVENANCE.json) | Original service revision and subsequent runtime changes |
 
-The HW9 setup and scripted unsupported-input checks are complete locally. The
-boundary improvement adds machine-readable missing/received-column diagnostics;
-it does not establish improved agent success. The main HW9 cold-start test remains
-the next step in the handoff. See the owner's handoff message for publication
-verification and confirm accepted collaborator access before editing.
-`hw9-docs-v0` and `hw9-v1` preserve the baseline and technical handoff revisions.
+The boundary improvement adds machine-readable missing/received-column
+diagnostics; it does not establish improved agent success. In the main HW9
+cold-start test, two fresh Claude sessions given only this guide, their tools and
+a goal-level task completed the transaction; the required attempt (`main-01`)
+passed all predefined checks including the buyer's downstream report, and an
+optional repetition passed C1–C5 but failed the report-format check
+([details](evidence/hw9-main/README.md)). `hw9-docs-v0` and `hw9-v1` preserve the
+baseline and technical handoff revisions.
 
 ## Current limits
 

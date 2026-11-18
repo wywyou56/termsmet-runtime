@@ -226,18 +226,30 @@ def load_evidence(run):
     return evidence
 
 
-def load_snapshot(run):
-    path = run / "termsmet.sqlite"
-    if not path.is_file():
-        raise Incomplete("missing termsmet.sqlite snapshot")
+TABLES = ("jobs", "agreement_versions", "acceptances", "submissions",
+          "check_results", "challenges", "settlement_events")
+
+
+def export_tables(path):
+    """Read all business tables from a completed snapshot, read-only."""
     # A completed backup is self-contained; read-only mode cannot create or modify it.
     with closing(sqlite3.connect(path.resolve().as_uri() + "?mode=ro", uri=True)) as connection:
         connection.row_factory = sqlite3.Row
-        tables = {}
-        for table in ("jobs", "agreement_versions", "acceptances", "submissions",
-                      "check_results", "challenges", "settlement_events"):
-            tables[table] = [dict(row) for row in connection.execute(f"SELECT * FROM {table}")]
-    return tables
+        return {table: [dict(row) for row in connection.execute(f"SELECT * FROM {table}")] for table in TABLES}
+
+
+def load_snapshot(run):
+    """Return (tables, source). Published evidence carries a recorded export instead of the database."""
+    path = run / "termsmet.sqlite"
+    if path.is_file():
+        return export_tables(path), "snapshot opened read-only"
+    export = run / "state.json"
+    if export.is_file():
+        tables = read_json(export).get("tables")
+        if not isinstance(tables, dict) or set(tables) != set(TABLES):
+            raise Incomplete("state.json does not contain the seven business tables")
+        return tables, "recorded state export (not independent inspection of the database)"
+    raise Incomplete("missing termsmet.sqlite snapshot")
 
 
 def evaluated_job(db, report):
@@ -445,7 +457,7 @@ def evaluate(run, expected_delivery, expected_report):
     calls = {role: evidence[f"calls_{role}"] for role in ROLES}
     job_id = None
     try:
-        db = load_snapshot(run)
+        db, result["state_source"] = load_snapshot(run)
         job_id, how = evaluated_job(db, report)
     except (Incomplete, sqlite3.Error) as exc:
         for key in ("C1", "C2", "C3", "C4"):

@@ -1,0 +1,90 @@
+{
+  "snapshot_sha256": "5a3dbeb921aa22b927bf86f729a134270534078c36bf6355e5b2ef71b96c7082",
+  "source": "termsmet.sqlite opened read-only after the run",
+  "tables": {
+    "acceptances": [
+      {
+        "accepted_at": "2026-11-18T13:49:49.999110Z",
+        "identity": "buyer",
+        "job_id": "job-23a788647641450d9f1c90fb63e95e8e",
+        "version": 1
+      },
+      {
+        "accepted_at": "2026-11-18T13:49:54.795297Z",
+        "identity": "provider",
+        "job_id": "job-23a788647641450d9f1c90fb63e95e8e",
+        "version": 1
+      }
+    ],
+    "agreement_versions": [
+      {
+        "checker_version": "order_extraction_v1.0",
+        "created_at": "2026-11-18T13:49:44.851910Z",
+        "job_id": "job-23a788647641450d9f1c90fb63e95e8e",
+        "source_csv": "Order,Customer,Units,Price\nK301,Synthetic-Harbor,4,$25.00\nK302,Synthetic-Maple,3,$2.675\nK303,Synthetic-Cedar,1,$149.99\nK304,Synthetic-Harbor,12,$8.40\nK305,Synthetic-Birch,7,$0.995\nK306,Synthetic-Maple,5,$19.99\nK307,Synthetic-Cedar,10,$12.50\nK308,Synthetic-Birch,6,$3.333\n",
+        "source_hash": "87e29c325cd787b1b8b7e33a9e1c160e2316d8710943d05a120067b198284cf8",
+        "terms_json": "{\"template_id\": \"order_extraction_v1\", \"source_csv\": \"Order,Customer,Units,Price\\nK301,Synthetic-Harbor,4,$25.00\\nK302,Synthetic-Maple,3,$2.675\\nK303,Synthetic-Cedar,1,$149.99\\nK304,Synthetic-Harbor,12,$8.40\\nK305,Synthetic-Birch,7,$0.995\\nK306,Synthetic-Maple,5,$19.99\\nK307,Synthetic-Cedar,10,$12.50\\nK308,Synthetic-Birch,6,$3.333\\n\", \"repair_window_minutes\": 5, \"max_repairs\": 1}",
+        "version": 1
+      }
+    ],
+    "challenges": [],
+    "check_results": [
+      {
+        "checked_at": "2026-11-18T13:50:10.440136Z",
+        "checker_version": "order_extraction_v1.0",
+        "errors_json": "[]",
+        "job_id": "job-23a788647641450d9f1c90fb63e95e8e",
+        "source_hash": "87e29c325cd787b1b8b7e33a9e1c160e2316d8710943d05a120067b198284cf8",
+        "submission_version": 1,
+        "verdict": "PASS"
+      }
+    ],
+    "jobs": [
+      {
+        "accepted_at": "2026-11-18T13:49:54.795297Z",
+        "buyer_identity": "buyer",
+        "cancellation_reason": null,
+        "cancelled_at": null,
+        "created_at": "2026-11-18T13:49:44.851910Z",
+        "current_submission_version": 1,
+        "current_version": 1,
+        "first_submission_deadline": "2026-11-18T13:55:01.599499Z",
+        "funded_at": "2026-11-18T13:50:01.599499Z",
+        "job_id": "job-23a788647641450d9f1c90fb63e95e8e",
+        "provider_fault": null,
+        "provider_identity": "provider",
+        "recovery_deadline": null,
+        "released_at": "2026-11-18T13:50:19.097517Z",
+        "repair_deadline": null,
+        "review_deadline": "2026-11-18T13:50:12.440136Z",
+        "status": "RELEASED",
+        "updated_at": "2026-11-18T13:50:19.097517Z"
+      }
+    ],
+    "settlement_events": [
+      {
+        "created_at": "2026-11-18T13:50:01.599499Z",
+        "event_type": "SIMULATED_FUNDING",
+        "job_id": "job-23a788647641450d9f1c90fb63e95e8e",
+        "simulated": 1
+      },
+      {
+        "created_at": "2026-11-18T13:50:19.097517Z",
+        "event_type": "SIMULATED_RELEASE",
+        "job_id": "job-23a788647641450d9f1c90fb63e95e8e",
+        "simulated": 1
+      }
+    ],
+    "submissions": [
+      {
+        "agreement_version": 1,
+        "delivery_json": "[{\"order_id\": \"K301\", \"quantity\": 4, \"unit_price_cents\": 2500, \"total_cents\": 10000}, {\"order_id\": \"K302\", \"quantity\": 3, \"unit_price_cents\": 268, \"total_cents\": 804}, {\"order_id\": \"K303\", \"quantity\": 1, \"unit_price_cents\": 14999, \"total_cents\": 14999}, {\"order_id\": \"K304\", \"quantity\": 12, \"unit_price_cents\": 840, \"total_cents\": 10080}, {\"order_id\": \"K305\", \"quantity\": 7, \"unit_price_cents\": 100, \"total_cents\": 700}, {\"order_id\": \"K306\", \"quantity\": 5, \"unit_price_cents\": 1999, \"total_cents\": 9995}, {\"order_id\": \"K307\", \"quantity\": 10, \"unit_price_cents\": 1250, \"total_cents\": 12500}, {\"order_id\": \"K308\", \"quantity\": 6, \"unit_price_cents\": 333, \"total_cents\": 1998}]",
+        "job_id": "job-23a788647641450d9f1c90fb63e95e8e",
+        "response_deadline": "2026-11-18T13:55:01.599499Z",
+        "submission_version": 1,
+        "submitted_at": "2026-11-18T13:50:10.436638Z",
+        "submitted_by": "provider"
+      }
+    ]
+  }
+}
